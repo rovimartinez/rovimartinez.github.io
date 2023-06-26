@@ -84,14 +84,22 @@
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+
     const firebaseConfig = {
-      // Inserta aquí tu configuración de Firebase
-      // ...
+      apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+      authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+      projectId: "roboticaeducativa-b5ee2",
+      storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+      messagingSenderId: "953005574181",
+      appId: "1:953005574181:web:684ed71344e716a1d557cc",
+      measurementId: "G-KQVW7RP5X9"
     };
 
-    // Inicializar Firebase
-    firebase.initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
     // Obtener elementos del formulario
     const emailField = document.getElementById('email');
