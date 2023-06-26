@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo 1 - Robótica educativa</title>
+
+
   <style>
+    /* Estilos para el cuerpo del documento */
     body {
       background-color: #f2f2f2;
       font-family: Arial, sans-serif;
     }
 
+    /* Estilos para el encabezado */
     header {
       background-color: #336699;
       padding: 20px;
@@ -17,19 +22,13 @@
       text-align: center;
     }
 
+    /* Estilos para el título */
     h1 {
       margin: 0;
       font-size: 24px;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
+    /* Estilos para el botón de enviar */
     input[type="submit"] {
       background-color: #336699;
       color: #fff;
@@ -39,10 +38,91 @@
       cursor: pointer;
     }
 
+    /* Estilos al pasar el cursor sobre el botón de enviar */
     input[type="submit"]:hover {
       background-color: #235180;
     }
-  </style>
+
+    /* Estilos para el contenedor principal */
+    .container {
+      display: flex;
+    }
+
+    /* Estilos para la parte izquierda del contenedor */
+    .left-section {
+      width: 15%;
+      background-color: #E6F2F7;
+      padding: 20px;
+    }
+
+    /* Estilos para la parte derecha del contenedor */
+    .right-section {
+      width: 85%;
+      background-color: #D4E6F1;
+      padding: 20px;
+    }
+
+    /* Estilos para los módulos de navegación */
+    .navigation {
+      margin-bottom: 20px;
+    }
+
+    /* Estilos para los enlaces de los módulos */
+    .navigation a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    /* Estilos para el botón de cerrar sesión */
+    .logout-button {
+      display: block;
+      width: 100px;
+      margin: 0 auto;
+      padding: 10px;
+      background-color: #137CBD;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    /* Estilos para el texto de robótica educativa */
+    .right-section h2,
+    .right-section p {
+      font-size: 24px;
+    }
+
+    /* Estilos para la línea horizontal en la navegación */
+    .navigation hr {
+      border: none;
+      border-top: 2px solid #137CBD;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+  /* Estilo personalizado para los botones */
+  .custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #336699;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 120px; /* Ajusta el ancho según tus necesidades */
+  }
+
+  .custom-button:hover {
+    background-color: #235180;
+  }
+
+</style>
+
+// Conexion a firebase
+
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
@@ -92,12 +172,41 @@
     });
   </script>
 </head>
+
+<!-- Programacion del contenido -->
+
 <body>
   <header>
     <h1>Módulo 1 - Robótica educativa</h1>
   </header>
 
- <section>
+<!-- Contenedor principal -->
+<div class="container">
+  <!-- Parte izquierda con panel de navegación -->
+  <div class="left-section">
+    <div class="navigation">
+      <h2>Módulos:</h2>
+      <hr>
+
+        <!-- Lista de enlaces a los módulos -->
+        <li><a href="#">Módulo 1</a></li><hr>
+        <li><a href="#">Módulo 2</a></li><hr>
+        <li><a href="#">Módulo 3</a></li><hr>
+        <li><a href="#">Módulo 4</a></li><hr>
+
+    </div>
+    
+    <!-- Formulario para cerrar sesión -->
+    <div class="container">
+      <form id="logoutForm">
+        <input type="submit" value="Cerrar sesión">
+      </form>
+    </div>
+  </div>
+
+  <!-- Parte derecha con información de robótica educativa -->
+  <div class="right-section">
+     <section>
     <h2>Modulo 1</h2>
     <p>En el primer módulo de nuestro curso de robótica educativa, nos introduciremos en el sistema de Aprendizaje Basado en Proyectos (ABP).</p>
     <p>El ABP es una metodología que promueve un aprendizaje activo y práctico, donde los estudiantes desarrollan habilidades mediante la realización de proyectos reales. Durante este módulo, exploraremos cómo aplicar el ABP en la fabricación de un automóvil básico con movimientos programados.</p>
@@ -107,22 +216,24 @@
       <li>
         <h3>Sesión: Partes del Automóvil</h3>
         <p>En esta sesión, exploraremos las diferentes partes que componen un automóvil básico programable. Conoceremos los componentes esenciales, como el chasis, las ruedas, el motor y los sensores.</p>
-        <button onclick="location.href='modulo1partes.html'">Ver</button>
+        <button class="custom-button" onclick="location.href='modulo1partes.html'">Ver</button>
       </li>
       <li>
         <h3>Sesión: Programación del Automóvil</h3>
         <p>En esta sesión, nos adentraremos en la programación del automóvil básico. Aprenderemos los conceptos básicos de la programación y cómo aplicarlos para controlar los movimientos del vehículo.</p>
-        <button onclick="location.href='modulo1programa1.html'">Ver</button>
+        <button class="custom-button" onclick="location.href='modulo1programa1.html'">Ver</button>
+
       </li>
     </ul>
   </section>
-
-
-  <div class="container">
-       <form id="logoutForm">
-      <input type="submit" value="Cerrar sesión">
-    </form>
   </div>
+</div>
+
+
+
+
+
+
 
 
 </body>
