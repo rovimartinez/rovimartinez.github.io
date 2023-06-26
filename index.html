@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Página de Robótica Educativa</title>
+  <title>Página de Autenticación</title>
   <style>
     /* Estilos CSS aquí */
 
@@ -25,10 +25,6 @@
       font-size: 32px;
     }
 
-    h2 {
-      text-align: center;
-    }
-
     section {
       max-width: 800px;
       margin: 0 auto;
@@ -36,9 +32,22 @@
       background-color: #FFFFFF;
     }
 
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
     button {
       display: block;
-      margin: 20px auto;
+      margin-top: 10px;
       padding: 10px 20px;
       background-color: #333333;
       color: #FFFFFF;
@@ -47,23 +56,100 @@
       font-size: 16px;
       cursor: pointer;
     }
+
+    .error-message {
+      color: red;
+    }
+
+    .success-message {
+      color: green;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Robótica Educativa</h1>
+    <h1>Robótica Educativa - Inicio de Sesión</h1>
   </header>
 
   <section>
-    <h2>Importancia de la Robótica Educativa</h2>
-    <p>¡Bienvenido(a) a nuestra página de Robótica Educativa!</p>
-    <p>En un mundo cada vez más tecnológico, la robótica educativa se ha convertido en una herramienta fundamental para potenciar el aprendizaje y desarrollar habilidades en los estudiantes. Mediante la combinación de conceptos de ciencia, tecnología, ingeniería y matemáticas (STEM), la robótica educativa fomenta la creatividad, el pensamiento crítico y la resolución de problemas.</p>
-    <p>En esta plataforma, exploraremos la importancia de implementar la robótica educativa en las instituciones educativas. Descubriremos cómo esta disciplina promueve el trabajo en equipo, la colaboración y el desarrollo de habilidades prácticas, preparando a los estudiantes para enfrentar los desafíos del siglo XXI.</p>
-    <p>Acompáñanos en este fascinante viaje, donde exploraremos el mundo de la robótica educativa y su impacto en la formación de los líderes y profesionales del futuro. ¡Prepárate para adentrarte en un universo de creatividad, innovación y aprendizaje!</p>
-
-    <img src="imagen\robots_educativos.png" alt="Robótica Educativa" style="display: block; margin: 20px auto; max-width: 50%; height: auto;">
-
-    <button onclick="location.href='modulo1.html'">Iniciar Curso</button>
+    <h2>Autenticación</h2>
+    <form id="auth-form">
+      <input type="email" id="email" placeholder="Correo electrónico" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit" id="login-btn">Iniciar sesión</button>
+      <button type="submit" id="register-btn">Registrar</button>
+    </form>
+    <div id="message-container"></div>
   </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      // Inserta aquí tu configuración de Firebase
+      // ...
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Obtener elementos del formulario
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+    const loginButton = document.getElementById('login-btn');
+    const registerButton = document.getElementById('register-btn');
+    const messageContainer = document.getElementById('message-container');
+
+    // Manejar el inicio de sesión
+    loginButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = emailField.value;
+      const password = passwordField.value;
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Inicio de sesión exitoso
+          showMessage('success', 'Inicio de sesión exitoso');
+          clearForm();
+        })
+        .catch((error) => {
+          // Error en el inicio de sesión
+          showMessage('error', 'Error: ' + error.message);
+        });
+    });
+
+    // Manejar el registro
+    registerButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = emailField.value;
+      const password = passwordField.value;
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Registro exitoso
+          showMessage('success', 'Registro exitoso');
+          clearForm();
+        })
+        .catch((error) => {
+          // Error en el registro
+          showMessage('error', 'Error: ' + error.message);
+        });
+    });
+
+    // Función para mostrar mensajes
+    function showMessage(type, message) {
+      const messageElement = document.createElement('p');
+      messageElement.textContent = message;
+      messageElement.classList.add(type + '-message');
+      messageContainer.appendChild(messageElement);
+      setTimeout(() => {
+        messageElement.remove();
+      }, 5000);
+    }
+
+    // Función para limpiar el formulario
+    function clearForm() {
+      emailField.value = '';
+      passwordField.value = '';
+    }
+  </script>
 </body>
 </html>
