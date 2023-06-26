@@ -85,7 +85,7 @@
   </section>
 
   <section>
- <hr>
+    <hr>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="modulo1.html">Modulo 1</a>
@@ -95,6 +95,31 @@
       <a href="final.html">Final</a>
     </nav>
   </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+      authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+      projectId: "roboticaeducativa-b5ee2",
+      storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+      messagingSenderId: "953005574181",
+      appId: "1:953005574181:web:684ed71344e716a1d557cc",
+      measurementId: "G-KQVW7RP5X9"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Verificar estado de inicio de sesión
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        // Redireccionar al inicio de sesión si no ha iniciado sesión
+        location.href = "index.html";
+      }
+    });
+  </script>
 
 </body>
 </html>
