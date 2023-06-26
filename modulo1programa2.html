@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Módulo 1 - Programación</title>
+  <style>
+    /* Estilos CSS aquí */
+
+    body {
+      background-color: #F2F2F2;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #FFFFFF;
+      margin: 0;
+      font-size: 32px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #EEEEEE;
+      color: #333333;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+
+    .btn-show-example {
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .btn-show-code {
+      background-color: #008CBA;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .popup-content img {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .btn-close-example {
+      background-color: #CCCCCC;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+nav {
+      text-align: center;
+    }
+
+
+ 
+</style>
+</head>
+<body>
+  <header>
+    <h1>Programación en C++ para Arduino</h1>
+  </header>
+
+  <section>
+    <h2>¿Qué es la sintaxis?</h2>
+    <p>La sintaxis se refiere a las reglas y estructura gramatical que se deben seguir al escribir código en un lenguaje de programación. En C++ para Arduino, la sintaxis determina cómo se deben escribir las instrucciones y cómo deben organizarse en el programa.</p>
+  </section>
+
+  <section>
+    <h2>¿Qué es el CamelCase?</h2>
+    <p>El CamelCase es una convención de escritura en la que las palabras compuestas o frases se escriben sin espacios y con cada palabra comenzando con una letra mayúscula, excepto la primera palabra, que se escribe en minúscula. Es comúnmente utilizado en la nomenclatura de variables y funciones en Arduino para mejorar la legibilidad del código.</p>
+  </section>
+
+  <section>
+    <h2>void setup()</h2>
+    <p>La función <code>void setup()</code> se llama cuando se inicia un sketch en Arduino. Se utiliza para inicializar variables, configurar los modos de los pines, comenzar a usar bibliotecas, etc. La función <code>setup()</code> solo se ejecutará una vez, después de cada encendido o reinicio de la placa Arduino.</p>
+    <pre>
+      <code style="background-color: #EEEEEE; color: #333333;">
+        void setup() {
+          // Inicialización del código de configuración
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    <h2>void loop()</h2>
+    <p>La función <code>void loop()</code> se ejecuta de forma repetitiva después de que la función <code>setup()</code> haya sido ejecutada. Aquí es donde se coloca el código principal del programa. Todo lo que esté dentro de esta función se repetirá continuamente mientras la placa Arduino esté encendida.</p>
+    <pre>
+      <code style="background-color: #EEEEEE; color: #333333;">
+        void loop() {
+          // Código principal del programa
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    <h2>pinMode(), OUTPUT, INPUT</h2>
+    <p>La función <code>pinMode()</code> se utiliza para configurar el modo de un pin en Arduino. Puede establecerse como <code>OUTPUT</code> (salida) o <code>INPUT</code> (entrada), dependiendo de cómo se vaya a utilizar el pin.</p>
+    <p>El valor <code>OUTPUT</code> se utiliza cuando se desea enviar una señal desde el Arduino a un componente externo, como un LED o un motor. El valor <code>INPUT</code> se utiliza cuando se desea leer una señal proveniente de un sensor u otro dispositivo conectado al Arduino.</p>
+    <pre>
+      <code style="background-color: #EEEEEE; color: #333333;">
+        pinMode(pin, mode);
+      </code>
+    </pre>
+    <p>Donde:</p>
+    <ul>
+      <li><code>pin</code>: El número del pin que se desea configurar.</li>
+      <li><code>mode</code>: El modo en el que se desea configurar el pin (<code>OUTPUT</code> o <code>INPUT</code>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>digitalWrite(), HIGH, LOW</h2>
+    <p>La función <code>digitalWrite()</code> se utiliza para establecer un valor de voltaje en un pin digital de Arduino. Puede establecerse como <code>HIGH</code> (alto) o <code>LOW</code> (bajo).</p>
+    <p>Si el pin ha sido configurado como <code>OUTPUT</code> con <code>pinMode()</code>, su voltaje se establecerá en el valor correspondiente: 5V (o 3.3V en placas de 3.3V) para <code>HIGH</code>, y 0V (tierra) para <code>LOW</code>.</p>
+    <p>Si el pin está configurado como <code>INPUT</code>, <code>digitalWrite()</code> habilitará (<code>HIGH</code>) o deshabilitará (<code>LOW</code>) la resistencia pull-up interna del pin de entrada. Se recomienda configurar el pin como <code>INPUT_PULLUP</code> con <code>pinMode()</code> para habilitar la resistencia pull-up interna. Consulta el tutorial sobre Pines Digitales para obtener más información.</p>
+    <pre>
+      <code style="background-color: #EEEEEE; color: #333333;">
+        digitalWrite(pin, value);
+      </code>
+    </pre>
+    <p>Donde:</p>
+    <ul>
+      <li><code>pin</code>: El número del pin digital en el que se desea establecer el valor.</li>
+      <li><code>value</code>: El valor que se desea establecer (<code>HIGH</code> o <code>LOW</code>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>delay()</h2>
+    <p>La función <code>delay()</code> se utiliza para pausar la ejecución de un programa por un período de tiempo especificado en milisegundos (ms).</p>
+    <pre>
+      <code style="background-color: #EEEEEE; color: #333333;">
+        delay(ms);
+      </code>
+    </pre>
+    <p>Donde:</p>
+    <ul>
+      <li><code>ms</code>: El número de milisegundos durante los cuales se pausará el programa.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Ejemplo de encender y apagar un LED</h2>
+<nav>
+    <button class="btn-show-example">Mostrar imagen</button>
+    <button class="btn-show-code">Mostrar código</button>
+</nav>
+
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <img src="imagen\led_example.png" alt="Ejemplo de conexiones" width="500" style="display: none;">
+        <pre style="display: none;">
+          <code style="background-color: #EEEEEE; color: #333333;">
+            void setup() {
+              pinMode(13, OUTPUT);    // Configura el pin 13 como salida
+            }
+
+            void loop() {
+              digitalWrite(13, HIGH); // Enciende el LED
+              delay(1000);            // Espera 1 segundo
+              digitalWrite(13, LOW);  // Apaga el LED
+              delay(1000);            // Espera 1 segundo
+            }
+          </code>
+        </pre>
+        <button class="btn-close-example">Cerrar</button>
+      </div>
+    </div>
+  </section>
+
+<section>
+  <hr>
+  <nav style="display: flex; justify-content: center;">
+    <button onclick="location.href='modulo1programa1.html'" style="background-color: #333333; color: #FFFFFF; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Volver</button>
+  </nav>
+  <hr>
+</section>
+
+
+  <script>
+    // Script para mostrar/ocultar la ventana emergente del ejemplo
+    const btnShowImage = document.querySelector('.btn-show-example');
+    const btnShowCode = document.querySelector('.btn-show-code');
+    const popupOverlay = document.querySelector('.popup-overlay');
+    const popupContent = document.querySelector('.popup-content');
+    const btnCloseExample = document.querySelector('.btn-close-example');
+
+    btnShowImage.addEventListener('click', () => {
+      popupContent.querySelector('img').style.display = 'block';
+      popupContent.querySelector('pre').style.display = 'none';
+      popupOverlay.style.display = 'flex';
+    });
+
+    btnShowCode.addEventListener('click', () => {
+      popupContent.querySelector('img').style.display = 'none';
+      popupContent.querySelector('pre').style.display = 'block';
+      popupOverlay.style.display = 'flex';
+    });
+
+    btnCloseExample.addEventListener('click', () => {
+      popupOverlay.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
