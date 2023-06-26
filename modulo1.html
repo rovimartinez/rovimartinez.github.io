@@ -1,125 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Página de Robótica Educativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 - Robótica educativa</title>
   <style>
-    /* Estilos CSS aquí */
-
     body {
-      background-color: #F2F2F2;
-      margin: 0;
-      padding: 0;
+      background-color: #f2f2f2;
       font-family: Arial, sans-serif;
     }
 
     header {
-      background-color: #333333;
+      background-color: #336699;
       padding: 20px;
+      color: #fff;
       text-align: center;
     }
 
     h1 {
-      color: #FFFFFF;
       margin: 0;
-      font-size: 32px;
+      font-size: 24px;
     }
 
-    h2 {
-      text-align: center;
-    }
-
-    section {
+    .container {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
-      background-color: #FFFFFF;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
 
-    button {
-      display: block;
-      margin: 10px auto;
-      padding: 10px 20px;
-      background-color: #333333;
-      color: #FFFFFF;
+    input[type="submit"] {
+      background-color: #336699;
+      color: #fff;
       border: none;
+      padding: 10px 20px;
       border-radius: 4px;
-      font-size: 16px;
       cursor: pointer;
     }
 
-    nav {
-      text-align: center;
-    }
-
-    nav a {
-      margin: 0 10px;
-      color: blue; /* Cambiar a azul */
-      text-decoration: none;
+    input[type="submit"]:hover {
+      background-color: #235180;
     }
   </style>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+    authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+    projectId: "roboticaeducativa-b5ee2",
+    storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+    messagingSenderId: "953005574181",
+    appId: "1:953005574181:web:684ed71344e716a1d557cc",
+    measurementId: "G-KQVW7RP5X9"
+  };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // User is not authenticated, redirect to index.html
+        window.location.href = 'index.html';
+      }
+    });
+
+    const logoutForm = document.getElementById('logoutForm');
+
+    logoutForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      signOut(auth)
+        .then(() => {
+          // User signed out successfully
+          window.location.href = 'index.html'; // Redirect to index.html
+        })
+        .catch((error) => {
+          // Handle sign-out errors
+          console.log(error);
+          alert('Error al cerrar sesión.');
+        });
+    });
+  </script>
 </head>
 <body>
   <header>
-    <h1>Robótica Educativa</h1>
+    <h1>Módulo 1 - Robótica educativa</h1>
   </header>
 
-  <section>
-    <h2>Modulo 1</h2>
-    <p>En el primer módulo de nuestro curso de robótica educativa, nos introduciremos en el sistema de Aprendizaje Basado en Proyectos (ABP).</p>
-    <p>El ABP es una metodología que promueve un aprendizaje activo y práctico, donde los estudiantes desarrollan habilidades mediante la realización de proyectos reales. Durante este módulo, exploraremos cómo aplicar el ABP en la fabricación de un automóvil básico con movimientos programados.</p>
-    <p>Este proyecto permitirá a los estudiantes comprender los principios básicos de la robótica, aprender a programar movimientos y familiarizarse con las partes de un automóvil. A través de actividades prácticas, los estudiantes adquirirán habilidades en programación, construcción y resolución de problemas.</p>
-    <p>Te invitamos a explorar las diferentes sesiones disponibles:</p>
-    <ul>
-      <li>
-        <h3>Sesión: Partes del Automóvil</h3>
-        <p>En esta sesión, exploraremos las diferentes partes que componen un automóvil básico programable. Conoceremos los componentes esenciales, como el chasis, las ruedas, el motor y los sensores.</p>
-        <button onclick="location.href='modulo1partes.html'">Ver</button>
-      </li>
-      <li>
-        <h3>Sesión: Programación del Automóvil</h3>
-        <p>En esta sesión, nos adentraremos en la programación del automóvil básico. Aprenderemos los conceptos básicos de la programación y cómo aplicarlos para controlar los movimientos del vehículo.</p>
-        <button onclick="location.href='modulo1programa1.html'">Ver</button>
-      </li>
-    </ul>
-  </section>
+  <div class="container">
+    <h2>Bienvenido al Módulo 1</h2>
+    <p>¡Aquí aprenderás los conceptos básicos de la robótica educativa!</p>
 
-  <section>
-    <hr>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="modulo1.html">Modulo 1</a>
-      <a href="modulo2.html">Modulo 2</a>
-      <a href="modulo3.html">Modulo 3</a>
-      <a href="modulo4.html">Modulo 4</a>
-      <a href="final.html">Final</a>
-    </nav>
-  </section>
-
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
-      authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
-      projectId: "roboticaeducativa-b5ee2",
-      storageBucket: "roboticaeducativa-b5ee2.appspot.com",
-      messagingSenderId: "953005574181",
-      appId: "1:953005574181:web:684ed71344e716a1d557cc",
-      measurementId: "G-KQVW7RP5X9"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // Verificar estado de inicio de sesión
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        // Redireccionar al inicio de sesión si no ha iniciado sesión
-        location.href = "index.html";
-      }
-    });
-  </script>
-
+    <form id="logoutForm">
+      <input type="submit" value="Cerrar sesión">
+    </form>
+  </div>
 </body>
 </html>

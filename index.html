@@ -1,108 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Página de Autenticación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robótica educativa</title>
   <style>
-    /* Estilos CSS aquí */
-
     body {
-      background-color: #F2F2F2;
-      margin: 0;
-      padding: 0;
+      background-color: #f2f2f2;
       font-family: Arial, sans-serif;
     }
 
     header {
-      background-color: #333333;
+      background-color: #336699;
       padding: 20px;
+      color: #fff;
       text-align: center;
     }
 
     h1 {
-      color: #FFFFFF;
       margin: 0;
-      font-size: 32px;
+      font-size: 24px;
     }
 
-    section {
+    form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #336699;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #f0f0f0;
+    }
+
+ section {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
       background-color: #FFFFFF;
     }
 
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-    }
 
-    input {
-      display: block;
-      margin-bottom: 10px;
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    button {
-      display: block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #444444;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .error-message {
-      color: red;
-    }
-
-    .success-message {
-      color: green;
-    }
-
-    .logo {
-      max-width: 200px;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .credits {
-      text-align: center;
-      font-size: 14px;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Curso de Robótica Educativa</h1>
+    <h1>¡Bienvenido(a) a nuestra página de Robótica Educativa!</h1>
   </header>
 
-  <section>
-    <h2>¿Qué es la robótica educativa?</h2>
-    <p>La robótica educativa es una disciplina que combina la tecnología y la programación con la construcción y manipulación de robots. A través de la robótica, los estudiantes pueden aprender conceptos de ciencias, tecnología, ingeniería, arte y matemáticas (STEAM) de una manera práctica y divertida.</p>
-      <p><h2>Inicio de sesión</h2>   </p> 
-      <form id="auth-form">
-      <input type="email" id="email" placeholder="Correo electrónico" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
-      <button type="submit" id="login-btn">Iniciar sesión</button>
-    </form>
-    <div id="message-container"></div>
-  </section>
+<section>
+  <div class="image-container" style="display: flex;">
+    <div style="flex: 1;">
+      <img src="imagen\robots_educativos.png" alt="Robótica Educativa" style="max-width: 90%; padding-top: 30px;">
+    </div>
+      <form id="loginForm" style="border: 2px solid #ccc; padding: 20px; border-radius: 10px; background-color: #f7f7f7;">
+ 	 <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
 
-  <img src="imagen/robots_educativos.png" class="logo" alt="Robots Educativos">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
 
-  <div class="credits">
-    Esta página ha sido creada por Ronny Martinez
+        <input type="submit" value="Iniciar sesión">
+      </form>
+    </div>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <p>En un mundo cada vez más tecnológico, la robótica educativa se ha convertido en una herramienta fundamental para potenciar el aprendizaje y desarrollar habilidades en los estudiantes. Mediante la combinación de conceptos de ciencia, tecnología, ingeniería, arte y matemáticas (STEAM), la robótica educativa fomenta la creatividad, el pensamiento crítico y la resolución de problemas.</p>
+  <p>En esta plataforma, exploraremos la importancia de implementar la robótica educativa en las instituciones educativas. Descubriremos cómo esta disciplina promueve el trabajo en equipo, la colaboración y el desarrollo de habilidades prácticas, preparando a los estudiantes para enfrentar los desafíos del siglo XXI.</p>
+  <p>Acompáñanos en este fascinante viaje, donde exploraremos el mundo de la robótica educativa y su impacto en la formación de los líderes y profesionales del futuro. ¡Prepárate para adentrarte en un universo de creatividad, innovación y aprendizaje!</p>
+</section>
+
+<header>
+  <div class="credits" style="font-weight: bold; color: white;">
+    Esta página fue creada por <span style="display: inline; color: white;">Ronny Martinez     -> Da clic en </span>
+    <a href="https://www.instagram.com/robot.steam" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-left: 1px; color: white;">
+      @robot.steam
+    </a>
+  </div>
+</header>
+
+
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
@@ -126,47 +129,25 @@
     const analytics = getAnalytics(app);
     const auth = getAuth();
 
-    // Obtener elementos del formulario
-    const emailField = document.getElementById('email');
-    const passwordField = document.getElementById('password');
-    const loginButton = document.getElementById('login-btn');
-    const messageContainer = document.getElementById('message-container');
+    const loginForm = document.getElementById('loginForm');
 
-    // Manejar el inicio de sesión
-    loginButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = emailField.value;
-      const password = passwordField.value;
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      const email = loginForm.email.value;
+      const password = loginForm.password.value;
+
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Inicio de sesión exitoso
-          showMessage('success', 'Inicio de sesión exitoso');
-          clearForm();
-          // Redireccionar a la página "modulo1.html"
-          window.location.href = 'modulo1.html';
+          // User signed in successfully
+          window.location.href = 'modulo1.html'; // Redirect to modulo1.html
         })
         .catch((error) => {
-          // Error en el inicio de sesión
-          showMessage('error', 'Error: ' + error.message);
+          // Handle sign-in errors
+          console.log(error);
+          alert('Error al iniciar sesión. Verifica tus credenciales.');
         });
     });
-
-    // Función para mostrar mensajes
-    function showMessage(type, message) {
-      const messageElement = document.createElement('p');
-      messageElement.textContent = message;
-      messageElement.classList.add(type + '-message');
-      messageContainer.appendChild(messageElement);
-      setTimeout(() => {
-        messageElement.remove();
-      }, 5000);
-    }
-
-    // Función para limpiar el formulario
-    function clearForm() {
-      emailField.value = '';
-      passwordField.value = '';
-    }
   </script>
 </body>
 </html>
