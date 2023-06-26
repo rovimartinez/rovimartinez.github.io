@@ -49,7 +49,7 @@
       display: block;
       margin-top: 10px;
       padding: 10px 20px;
-      background-color: #FF0000;
+      background-color: #444444;
       color: #FFFFFF;
       border: none;
       border-radius: 4px;
@@ -64,23 +64,42 @@
     .success-message {
       color: green;
     }
+
+    .logo {
+      max-width: 200px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .credits {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Robótica Educativa - Inicio de Sesión</h1>
+    <h1>Curso de Robótica Educativa</h1>
   </header>
 
   <section>
-    <h2>Autenticación</h2>
-    <form id="auth-form">
+    <h2>¿Qué es la robótica educativa?</h2>
+    <p>La robótica educativa es una disciplina que combina la tecnología y la programación con la construcción y manipulación de robots. A través de la robótica, los estudiantes pueden aprender conceptos de ciencias, tecnología, ingeniería, arte y matemáticas (STEAM) de una manera práctica y divertida.</p>
+      <p><h2>Inicio de sesión</h2>   </p> 
+      <form id="auth-form">
       <input type="email" id="email" placeholder="Correo electrónico" required>
       <input type="password" id="password" placeholder="Contraseña" required>
       <button type="submit" id="login-btn">Iniciar sesión</button>
-      <button type="submit" id="register-btn">Registrar</button>
     </form>
     <div id="message-container"></div>
   </section>
+
+  <img src="imagen/robots_educativos.png" class="logo" alt="Robots Educativos">
+
+  <div class="credits">
+    Esta página ha sido creada por Ronny Martinez
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
@@ -91,6 +110,7 @@
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
     // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
       apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
       authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
@@ -110,7 +130,6 @@
     const emailField = document.getElementById('email');
     const passwordField = document.getElementById('password');
     const loginButton = document.getElementById('login-btn');
-    const registerButton = document.getElementById('register-btn');
     const messageContainer = document.getElementById('message-container');
 
     // Manejar el inicio de sesión
@@ -128,23 +147,6 @@
         })
         .catch((error) => {
           // Error en el inicio de sesión
-          showMessage('error', 'Error: ' + error.message);
-        });
-    });
-
-    // Manejar el registro
-    registerButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = emailField.value;
-      const password = passwordField.value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Registro exitoso
-          showMessage('success', 'Registro exitoso');
-          clearForm();
-        })
-        .catch((error) => {
-          // Error en el registro
           showMessage('error', 'Error: ' + error.message);
         });
     });
