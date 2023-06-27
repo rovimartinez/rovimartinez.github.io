@@ -1,53 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Modulo 1 - Partes del Automóvil</title>
   <style>
-    /* Estilos CSS aquí */
-
+    /* Estilos generales */
     body {
-      background-color: #F2F2F2;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
 
-    header {
-      background-color: #333333;
-      padding: 20px;
-      text-align: center;
-    }
-
+    /* Estilos del título */
     h1 {
-      color: #FFFFFF;
-      margin: 0;
-      font-size: 32px;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #FFFFFF;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #333333;
-    }
-
-    th {
-      text-align: left;
-    }
-
-  nav {
       text-align: center;
+    }
+
+    /* Estilos del contenedor principal */
+    .container {
+      display: flex;
+    }
+
+    /* Estilos de los botones */
+    .button-container {
+      flex-basis: 15%;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    .component-button {
+      display: block;
+      padding: 10px 20px;
+      background-color: #336699;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      margin-bottom: 5px;
+      width: 150px;
+    }
+
+    /* Estilos de la sección de la información */
+	.info-container {
+ 	 flex-basis: 100%;
+ 	 background-color: #f2f2f2;
+ 	 padding-top: 5px;
+ 	 padding-right: 20px;
+ 	 padding-bottom: 10px;
+ 	 padding-left: 20px;
+	}
+
+
+    /* Estilos de la sección de la imagen */
+    .image-container {
+      flex-basis: 100%;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .component-container {
+      display: none;
+    }
+
+    .component-container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .component-info {
+      font-size: 16px;
+	text-align: justify;
+      color: #666666;
+    }
+
+ /* Estilos para el encabezado */
+    header {
+      background-color: #336699;
+      padding: 5px;
+      color: #fff;
+      text-align: center;
+    }
+
+ nav {
+      text-align: center;
+	
     }
 
     nav a {
@@ -56,34 +94,105 @@
       text-decoration: none;
     }
 
-  button {
+ button {
       display: block;
       margin: 10px auto;
       padding: 10px 20px;
-      background-color: #333333;
+      background-color: #336699;
       color: #FFFFFF;
       border: none;
       border-radius: 4px;
       font-size: 16px;
       cursor: pointer;
     }
+/* Estilos de la información */
+	.instruccion {
+ 	 background-color: #f2f2f2;
+ 	 padding: 10px;
+	text-align: center;
+	}
 
   </style>
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+    authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+    projectId: "roboticaeducativa-b5ee2",
+    storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+    messagingSenderId: "953005574181",
+    appId: "1:953005574181:web:684ed71344e716a1d557cc",
+    measurementId: "G-KQVW7RP5X9"
+  };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // User is not authenticated, redirect to index.html
+        window.location.href = 'index.html';
+      }
+    });
+
+    const logoutForm = document.getElementById('logoutForm');
+
+    logoutForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      signOut(auth)
+        .then(() => {
+          // User signed out successfully
+          window.location.href = 'index.html'; // Redirect to index.html
+        })
+        .catch((error) => {
+          // Handle sign-out errors
+          console.log(error);
+          alert('Error al cerrar sesión.');
+        });
+    });
+  </script>
+
+
 </head>
 <body>
-  <header>
-    <h1>Modulo 1 - Partes del Automóvil</h1>
-  </header>
 
-<section>
-  <h2>Componente 1: Tarjeta microcontroladora (Arduino Uno)</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\uno.png" alt="Imagen de la tarjeta microcontroladora" style="max-width: 100%;">
-      </td>
-      <td width="70%">
-        <p>Descripción de la tarjeta microcontroladora (Arduino Uno).</p>
+<header>
+    <h1>Módulo 1 - Componentes</h1>
+  </header>
+<div class="instruccion">
+Da clic o haz doble clic sobre el componente que deseas ver u ocultar.
+</div>
+
+  <div class="container">
+    <div class="button-container">
+      <button class="component-button" onclick="toggleComponent(1)">Microcontrolador</button>
+      <button class="component-button" onclick="toggleComponent(2)">Pila o batería</button>
+      <button class="component-button" onclick="toggleComponent(3)">Portabaterias</button>
+      <button class="component-button" onclick="toggleComponent(4)">Cables Dupont</button>
+      <button class="component-button" onclick="toggleComponent(5)">Motorreductor</button>
+      <button class="component-button" onclick="toggleComponent(6)">Rueda</button>
+      <button class="component-button" onclick="toggleComponent(7)">Puente H</button>
+      <button class="component-button" onclick="toggleComponent(8)">Chasis</button>
+    </div>
+
+
+<!-- Contenedor de información -->
+<div class="info-container">
+      <div class="component-container" id="component1-info">
+        <div class="component-info">
+         <h2> <p>Descripción de la tarjeta microcontroladora (Arduino Uno).</p></h2> 
         <p>El Arduino Uno es una tarjeta de desarrollo basada en el microcontrolador ATmega328P. Es ampliamente utilizada en proyectos de robótica y electrónica debido a su simplicidad y versatilidad.</p>
         <p>Características del Arduino Uno:</p>
         <ul>
@@ -97,21 +206,12 @@
         </ul>
         <p>La tarjeta Arduino Uno se programa utilizando el entorno de desarrollo integrado (IDE) de Arduino, que facilita la escritura y carga de código en la tarjeta.</p>
         <p>Puedes encontrar más información y recursos en el sitio web oficial de Arduino.</p>
-      </td>
-    </tr>
-  </table>
-</section>
+        </div>
+      </div>
 
-
-<section>
-  <h2>Componente 2: Pila o batería 18650</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\pila.png" alt="Imagen de la pila o batería" style="max-width: 100%;">
-      </td>
-      <td width="70%">
-        <p>Descripción de la pila o batería 18650.</p>
+      <div class="component-container" id="component2-info">
+        <div class="component-info">
+        <h2><p>Descripción de la pila o batería 18650.</p></h2> 
         <p>La pila o batería 18650 es una batería recargable de litio-ion con una forma cilíndrica y dimensiones estándar. Es ampliamente utilizada en aplicaciones electrónicas debido a su alta capacidad y capacidad de descarga.</p>
         <p>Características de la pila o batería 18650:</p>
         <ul>
@@ -123,21 +223,12 @@
         </ul>
         <p>La pila o batería 18650 se utiliza para proporcionar la energía necesaria para alimentar el automóvil programable. Se conecta al circuito eléctrico del vehículo utilizando cables o un soporte específico.</p>
         <p>Recuerda seguir las precauciones de seguridad al manipular y cargar baterías de litio-ion.</p>
-      </td>
-    </tr>
-  </table>
-</section>
+        </div>
+      </div>
 
-
-<section>
-  <h2>Componente 3: Porta pilas o portabaterías</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\portapila.png" alt="Imagen del porta pilas o portabaterías" style="max-width: 100%;">
-      </td>
-      <td width="70%">
-        <p>Descripción del porta pilas o portabaterías.</p>
+      <div class="component-container" id="component3-info">
+        <div class="component-info">
+         <h2><p>Descripción del porta pilas o portabaterías.</p></h2> 
         <p>El porta pilas o portabaterías es un dispositivo diseñado para alojar y sostener las pilas o baterías. Proporciona una conexión segura y estable para garantizar el suministro de energía al circuito del automóvil programable.</p>
         <p>Características del portapilas o portabaterías:</p>
         <ul>
@@ -146,22 +237,13 @@
           <li>Material: Puede estar fabricado en plástico u otros materiales aislantes.</li>
           <li>Construcción: Algunos modelos cuentan con un interruptor de encendido/apagado integrado.</li>
         </ul>
-        <p>El portapilas o portabaterías debe estar correctamente conectado al circuito eléctrico del vehículo para garantizar un suministro de energía confiable.</p>
-        <!-- Agrega cualquier otra información relevante sobre el componente -->
-      </td>
-    </tr>
-  </table>
-</section>
+        <p>El portapilas o portabaterías debe estar correctamente conectado al circuito eléctrico del vehículo para garantizar un suministro de energía confiable.</p></div>
+      </div>
 
-<section>
-  <h2>Componente 4: Cables Dupont</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\cables.png" alt="Imagen de los cables Dupont" style="max-width: 100%;">
-      </td>
-      <td width="70%">
-        <p>Descripción de los cables Dupont.</p>
+
+      <div class="component-container" id="component4-info">
+        <div class="component-info">
+         <h2> <p>Descripción de los cables Dupont.</p></h2> 
         <p>Los cables Dupont son cables de conexión utilizados comúnmente en proyectos electrónicos y de robótica. Estos cables están diseñados para proporcionar conexiones rápidas y confiables entre componentes electrónicos, permitiendo una fácil interconexión y ensamblaje.</p>
         <p>Características de los cables Dupont:</p>
         <ul>
@@ -177,92 +259,117 @@
           <li>Calidad y durabilidad: Es importante elegir cables Dupont de calidad para garantizar una conexión estable y duradera.</li>
         </ul>
         <p>Los cables Dupont son componentes versátiles y esenciales en la construcción de circuitos electrónicos y conexiones entre diferentes módulos del automóvil programable.</p>
-        <!-- Agrega cualquier otra información relevante sobre los cables Dupont -->
-      </td>
-    </tr>
-  </table>
-</section>
+     	</div>
+      </div>
 
-
-<section>
-  <h2>Componente 5: Motoreductores (Motor de aficionado)</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\motordc.png" alt="Imagen de los motoreductores" style="max-width: 100%;">
-      </td>
-      <td width="70%">
+ 
+      <div class="component-container" id="component5-info">
+        <div class="component-info">
+         <h2> <p>Descripción de los motoreductores.</p></h2> 
         <p>Los motoreductores son componentes clave en la construcción de un automóvil programable. Estos motores de aficionado están diseñados específicamente para proporcionar la potencia necesaria para el movimiento del vehículo.</p>
         <p>La combinación de un motor y un reductor de velocidad en un solo componente permite controlar la velocidad y el torque del motor. Esto es fundamental para lograr movimientos precisos y ajustar el rendimiento del automóvil según sea necesario.</p>
         <p>Los motoreductores suelen estar equipados con ejes que se pueden acoplar a las ruedas del vehículo. Dependiendo de la configuración, pueden ser utilizados para impulsar las ruedas directamente o a través de otros mecanismos de transmisión.</p>
         <p>Es importante seleccionar los motoreductores adecuados según los requisitos del proyecto y considerar factores como la potencia, el tamaño, la relación de reducción y la compatibilidad con otros componentes.</p>
-      </td>
-    </tr>
-  </table>
-</section>
+      	</div>
+      </div>
 
 
-<section>
-  <h2>Componente 6: Ruedas para motores</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\llanta.png" alt="Imagen de las ruedas para motores" style="max-width: 100%;">
-      </td>
-      <td width="70%">
-        <p>Las ruedas para motores son elementos fundamentales para el desplazamiento del automóvil programable. Estas ruedas están diseñadas específicamente para ser acopladas a los ejes de los motoreductores y permitir el movimiento del vehículo.</p>
+      <div class="component-container" id="component6-info">
+        <div class="component-info">
+         <h2> <p>Descripción de las ruedas para motores.</p></h2> 
+         <p>Las ruedas para motores son elementos fundamentales para el desplazamiento del automóvil programable. Estas ruedas están diseñadas específicamente para ser acopladas a los ejes de los motoreductores y permitir el movimiento del vehículo.</p>
         <p>Existen diferentes tipos y tamaños de ruedas disponibles, y es importante seleccionar las adecuadas según las características del proyecto. Algunos aspectos a considerar son el diámetro, el material de fabricación y la adherencia de las ruedas a la superficie.</p>
         <p>Las ruedas para motores suelen contar con ranuras o agujeros en su diseño, permitiendo un acople seguro con los ejes de los motoreductores. Además, pueden tener características adicionales como bandas de rodamiento para mejorar la tracción o sistemas de suspensión para absorber impactos.</p>
         <p>Es recomendable asegurarse de que las ruedas estén bien equilibradas y sean compatibles con los ejes de los motoreductores utilizados en el proyecto. Esto garantizará un desplazamiento suave y eficiente del automóvil programable.</p>
-      </td>
-    </tr>
-  </table>
-</section>
-<section>
-  <h2>Componente 7: Puente H</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\puente.png" alt="Imagen del puente H" style="max-width: 100%;">
-      </td>
-      <td width="70%">
+     	</div>
+      </div>
+
+
+      <div class="component-container" id="component7-info">
+        <div class="component-info">
+         <h2> <p>Descripción del puente H.</p></h2> 
         <p>El puente H es un componente esencial en el sistema de control de los motores del automóvil programable. Se utiliza para controlar la dirección y la velocidad de los motores de corriente continua (DC).</p>
         <p>El puente H permite invertir el flujo de corriente a través de los motores, lo que permite que el automóvil se mueva hacia adelante o hacia atrás, e incluso girar en su lugar. También permite ajustar la velocidad de los motores controlando la cantidad de corriente suministrada a los mismos.</p>
         <p>Existen diferentes tipos y modelos de puentes H disponibles en el mercado, con diferentes capacidades de corriente y características adicionales. Al seleccionar un puente H, es importante asegurarse de que sea compatible con los motores utilizados y pueda proporcionar la corriente necesaria para su correcto funcionamiento.</p>
         <p>El puente H se conecta al microcontrolador (como Arduino) y recibe las señales de control para determinar la dirección y la velocidad de los motores. Además, suele contar con terminales de conexión para los cables de los motores y la alimentación.</p>
         <p>Es fundamental seguir las instrucciones del fabricante para realizar una correcta conexión y configuración del puente H en el proyecto del automóvil programable.</p>
-      </td>
-    </tr>
-  </table>
-</section>
+      
+	
+	</div>
+      </div>
 
 
-<section>
-  <h2>Componente 8: Chasis</h2>
-  <table>
-    <tr>
-      <td width="30%">
-        <img src="imagen\chasis.png" alt="Imagen del chasis" style="max-width: 100%;">
-      </td>
-      <td width="70%">
+      <div class="component-container" id="component8-info">
+        <div class="component-info">
+         <h2> <p>Descripción del chasis</p></h2> 
         <p>El chasis es la estructura principal del automóvil programable. Proporciona soporte y alojamiento para todos los componentes y sistemas del vehículo.</p>
         <p>El chasis puede estar fabricado con diferentes materiales, como plástico, metal, acrílico o incluso cartón. También es posible utilizar partes impresas en 3D para construir el chasis, lo que ofrece flexibilidad en el diseño y personalización del automóvil.</p>
         <p>El chasis debe ser lo suficientemente resistente y estable para soportar los movimientos y las cargas generadas durante el funcionamiento del automóvil. En el caso del cartón, se puede utilizar un material de alta densidad o reforzado para mejorar su resistencia y durabilidad.</p>
         <p>El diseño del chasis puede variar según el proyecto y los requerimientos específicos. Debe considerarse el tamaño y las dimensiones para asegurar que todos los componentes puedan acomodarse correctamente y se pueda lograr un ensamblaje adecuado.</p>
         <p>Es importante evaluar la calidad, resistencia y compatibilidad del chasis con los demás componentes del automóvil al seleccionar o diseñar uno. Además, se pueden agregar orificios, soportes y espacios para montar y asegurar los componentes, así como para permitir la instalación de otros accesorios opcionales, como sensores, luces o cámaras.</p>
         <p>El uso de partes impresas en 3D permite una mayor flexibilidad en la forma y diseño del chasis, lo que facilita la personalización y adaptación a diferentes necesidades y proyectos de robótica educativa.</p>
-      </td>
-    </tr>
-  </table>
+      	</div>
+      </div>
+
+    </div>
+
+<!-- Contenedor de imagenes -->
+ <div class="image-container">
+      <div class="component-container" id="component1">
+        <img src="imagen\uno.png" alt="Imagen de la tarjeta microcontroladora" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component2">
+         <img src="imagen\pila.png" alt="Imagen de la pila o batería" style="max-width: 100%;">
+      </div>
+
+    <div class="component-container" id="component3">
+         <img src="imagen\portapila.png" alt="Imagen del porta pilas o portabaterías" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component4">
+         <img src="imagen\cables.png" alt="Imagen de los cables Dupont" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component5">
+         <img src="imagen\motordc.png" alt="Imagen de los motoreductores" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component6">
+         <img src="imagen\llanta.png" alt="Imagen de las ruedas para motores" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component7">
+         <img src="imagen\puente.png" alt="Imagen del puente H" style="max-width: 100%;">
+      </div>
+
+      <div class="component-container" id="component8">
+         <img src="imagen\chasis.png" alt="Imagen del chasis" style="max-width: 100%;">
+      </div>  
+
+ </div>
+
+
+  </div>
+
+  <script>
+    function toggleComponent(componentNumber) {
+      var component = document.getElementById("component" + componentNumber);
+      component.style.display = component.style.display === "none" ? "block" : "none";
+
+      var info = document.getElementById("component" + componentNumber + "-info");
+      info.style.display = info.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+<section>
+  <hr>
+  <nav style="display: flex; justify-content: center;">
+    <button onclick="location.href='modulo1.html'">Volver</button>
+  </nav>
+  <hr>
 </section>
 
- <section>
-    <nav>
-	<button onclick="location.href='modulo1.html'">Volver</button>
-    </nav>
-	<hr>
-  </section>
-
-
 </body>
+
 </html>

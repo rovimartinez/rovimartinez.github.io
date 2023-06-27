@@ -51,14 +51,14 @@
     /* Estilos para la parte izquierda del contenedor */
     .left-section {
       width: 15%;
-      background-color: #E6F2F7;
+      background-color: #D4E6F1; /* Azul oscuro */
       padding: 20px;
     }
 
     /* Estilos para la parte derecha del contenedor */
     .right-section {
       width: 85%;
-      background-color: #D4E6F1;
+      background-color: #E6F2F7;  /* Azul claro */
       padding: 20px;
     }
 
@@ -74,21 +74,25 @@
     }
 
     /* Estilos para el botón de cerrar sesión */
-    .logout-button {
-      display: block;
-      width: 100px;
-      margin: 0 auto;
-      padding: 10px;
-      background-color: #137CBD;
-      color: #FFFFFF;
-      text-align: center;
-      text-decoration: none;
-    }
+   .logout-button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #137CBD;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
 
     /* Estilos para el texto de robótica educativa */
     .right-section h2,
     .right-section p {
-      font-size: 24px;
+    	font-size: 16px;
+    	line-height: 1.5;
+    	color: #333333;
+   	 margin-bottom: 10px;
     }
 
     /* Estilos para la línea horizontal en la navegación */
@@ -119,9 +123,8 @@
     background-color: #235180;
   }
 
+ 
 </style>
-
-// Conexion a firebase
 
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -199,7 +202,7 @@
     <!-- Formulario para cerrar sesión -->
     <div class="container">
       <form id="logoutForm">
-        <input type="submit" value="Cerrar sesión">
+       <input type="submit" value="Cerrar sesión"> 
       </form>
     </div>
   </div>
@@ -221,19 +224,11 @@
         <h2>Sesión: Programación del Automóvil</h2>
        <p>En esta sesión, nos adentraremos en la programación del automóvil básico. Aprenderemos los conceptos básicos de la programación y cómo aplicarlos para controlar los movimientos del vehículo.</p>
         <button class="custom-button" onclick="location.href='modulo1programa1.html'">Ver</button>
-
       </li>
     </ul>
   </section>
   </div>
 </div>
-
-
-
-
-
-
-
 
 </body>
 </html>
