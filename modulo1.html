@@ -123,7 +123,48 @@
     background-color: #235180;
   }
 
- 
+/* Estilos de ventana emergente */
+
+#inactive-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #EAF6FF;
+  border: 1px solid #4B9CEF;
+  border-radius: 10px; /* Agregamos esta propiedad para los bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: popupFadeIn 0.5s ease-in-out forwards;
+  text-align: center;
+}
+
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#inactive-popup p {
+  color: #333;
+  font-size: 16px; /* Agregamos esta propiedad para el tamaño de fuente */
+  margin: 0; /* Agregamos esta propiedad para eliminar el margen */
+}
+
+    #countdown {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+	text-align: center;
+    }
+
+
 </style>
 
   <script type="module">
@@ -145,10 +186,40 @@
     measurementId: "G-KQVW7RP5X9"
   };
 
-    // Initialize Firebase
+  // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth();
+
+
+// Temporizador de cierre de sesión
+
+var tiempo = 300000; // 5 minutos
+
+
+
+ let logoutTimer; // Variable para almacenar el temporizador de cierre de sesión
+
+    const startLogoutTimer = () => {
+      logoutTimer = setTimeout(() => {
+        signOut(auth)
+          .then(() => {
+            // Cerrar sesión automáticamente
+            window.location.href = 'index.html'; // Redireccionar a index.html
+          })
+          .catch((error) => {
+            // Manejar errores de cierre de sesión
+            console.log(error);
+            alert('Error al cerrar sesión.');
+          });
+      }, tiempo); // Cerrar sesión después de 10 segundos de inactividad
+    };
+
+    const resetLogoutTimer = () => {
+      clearTimeout(logoutTimer); // Reiniciar el temporizador de cierre de sesión
+      startLogoutTimer(); // Volver a iniciar el temporizador
+    };
+
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -164,15 +235,76 @@
 
       signOut(auth)
         .then(() => {
-          // User signed out successfully
+          // Usuario cerró sesión correctamente
           window.location.href = 'index.html'; // Redirect to index.html
         })
         .catch((error) => {
-          // Handle sign-out errors
+          // Manejar errores de cierre de sesión
           console.log(error);
           alert('Error al cerrar sesión.');
         });
     });
+
+
+
+// Reiniciar temporizador al hacer clic o interactuar con la página
+    document.addEventListener('click', resetLogoutTimer);
+    document.addEventListener('keydown', resetLogoutTimer);
+    document.addEventListener('mousemove', resetLogoutTimer);
+    document.addEventListener('scroll', resetLogoutTimer);
+    document.addEventListener('touchstart', resetLogoutTimer);
+
+    // Iniciar el temporizador de cierre de sesión al cargar la página
+    startLogoutTimer();
+
+
+
+ var timeout;
+
+    function showInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'block';
+
+      var countdownElement = document.getElementById('countdown');
+      countdownElement.textContent = '10';
+
+      var countdown = 10;
+      timeout = setInterval(function() {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+        if (countdown === 0) {
+          hideInactivePopup();
+        }
+      }, 1000);
+    }
+
+    function hideInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'none';
+
+      clearInterval(timeout);
+    }
+
+    var inactivityTime = 290000; // 10 segundos de inactividad
+    var timeoutID;
+
+    function resetTimer() {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(showInactivePopup, inactivityTime);
+    }
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('scroll', resetTimer);
+    window.addEventListener('touchstart', resetTimer);
+
+    resetTimer();
+
+
+
+
+
   </script>
 </head>
 
@@ -218,7 +350,10 @@
       <li>
         <h2>Sesión: Partes del Automóvil</h2>
         <p>En esta sesión, exploraremos las diferentes partes que componen un automóvil básico programable. Conoceremos los componentes esenciales, como el chasis, las ruedas, el motor y los sensores.</p>
-        <button class="custom-button" onclick="location.href='modulo1partes.html'">Ver</button>
+        <button class="custom-button" onclick="location.href='modulo1partes.html'">Ver</
+
+
+>
       </li>
       <li>
         <h2>Sesión: Programación del Automóvil</h2>
@@ -229,6 +364,14 @@
   </section>
   </div>
 </div>
+
+
+<!-- Ventana emergente -->
+  <div id="inactive-popup" class="popup" style="display: none;">
+    <p>Esta página se cerrará por inactividad en:</p>
+    <p id="countdown">5</p>
+  </div>
+
 
 </body>
 </html>
