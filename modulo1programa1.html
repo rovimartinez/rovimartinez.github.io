@@ -6,45 +6,45 @@
   <style>
     /* Estilos CSS aquí */
 
+    /* Estilos generales */
     body {
-      background-color: #F2F2F2;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+	background-color: #E6F2F7;
     }
 
+ /* Estilos para el encabezado */
     header {
-      background-color: #333333;
-      padding: 20px;
+      background-color: #336699;
+      padding: 10px;
+      color: #fff;
       text-align: center;
     }
 
-    h1 {
+      h1 {
+      text-align: center;
       color: #FFFFFF;
-      margin: 0;
+      margin: 10px;
       font-size: 32px;
     }
 
     h2 {
-      text-align: center;
+      text-align: left;
     }
 
     section {
-      max-width: 800px;
+font-family: Arial, sans-serif;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #FFFFFF;
+      background-color: #E6F2F7;
     }
 
     p {
       margin-bottom: 10px;
+	text-align: justify;
     }
 
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-      margin-bottom: 10px;
-    }
 
  nav {
       text-align: center;
@@ -56,11 +56,11 @@
       text-decoration: none;
     }
 
-  button {
+ button {
       display: block;
       margin: 10px auto;
       padding: 10px 20px;
-      background-color: #333333;
+      background-color: #336699;
       color: #FFFFFF;
       border: none;
       border-radius: 4px;
@@ -68,9 +68,213 @@
       cursor: pointer;
     }
 
+    /* Estilos para el botón de cerrar sesión */
+   .logout-button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #137CBD;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+/* Estilos de ventana emergente */
+
+#inactive-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #EAF6FF;
+  border: 1px solid #4B9CEF;
+  border-radius: 10px; /* Agregamos esta propiedad para los bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: popupFadeIn 0.5s ease-in-out forwards;
+  text-align: center;
+}
+
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#inactive-popup p {
+  color: #333;
+  font-size: 16px; /* Agregamos esta propiedad para el tamaño de fuente */
+  margin: 0; /* Agregamos esta propiedad para eliminar el margen */
+}
+
+    #countdown {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+	text-align: center;
+    }
+
+
 </style>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+    authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+    projectId: "roboticaeducativa-b5ee2",
+    storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+    messagingSenderId: "953005574181",
+    appId: "1:953005574181:web:684ed71344e716a1d557cc",
+    measurementId: "G-KQVW7RP5X9"
+  };
+
+  // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+
+// Temporizador de cierre de sesión
+
+var tiempo = 300000; // 5 minutos
+var tiempo2 = 290000; // 10 segndos antes de los 5 minutos
+
+ let logoutTimer; // Variable para almacenar el temporizador de cierre de sesión
+
+    const startLogoutTimer = () => {
+      logoutTimer = setTimeout(() => {
+        signOut(auth)
+          .then(() => {
+            // Cerrar sesión automáticamente
+            window.location.href = 'index.html'; // Redireccionar a index.html
+          })
+          .catch((error) => {
+            // Manejar errores de cierre de sesión
+            console.log(error);
+            alert('Error al cerrar sesión.');
+          });
+      }, tiempo); // Cerrar sesión después de 10 segundos de inactividad
+    };
+
+    const resetLogoutTimer = () => {
+      clearTimeout(logoutTimer); // Reiniciar el temporizador de cierre de sesión
+      startLogoutTimer(); // Volver a iniciar el temporizador
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // User is not authenticated, redirect to index.html
+        window.location.href = 'index.html';
+      }
+    });
+
+    const logoutForm = document.getElementById('logoutForm');
+
+    logoutForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      signOut(auth)
+        .then(() => {
+          // Usuario cerró sesión correctamente
+          window.location.href = 'index.html'; // Redirect to index.html
+        })
+        .catch((error) => {
+          // Manejar errores de cierre de sesión
+          console.log(error);
+          alert('Error al cerrar sesión.');
+        });
+    });
+
+// Reiniciar temporizador al hacer clic o interactuar con la página
+    document.addEventListener('click', resetLogoutTimer);
+    document.addEventListener('keydown', resetLogoutTimer);
+    document.addEventListener('mousemove', resetLogoutTimer);
+    document.addEventListener('scroll', resetLogoutTimer);
+    document.addEventListener('touchstart', resetLogoutTimer);
+
+    // Iniciar el temporizador de cierre de sesión al cargar la página
+    startLogoutTimer();
+
+ var timeout;
+
+    function showInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'block';
+
+      var countdownElement = document.getElementById('countdown');
+      countdownElement.textContent = '10';
+
+      var countdown = 10;
+      timeout = setInterval(function() {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+        if (countdown === 0) {
+          hideInactivePopup();
+        }
+      }, 1000);
+    }
+
+    function hideInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'none';
+
+      clearInterval(timeout);
+    }
+
+    var inactivityTime = tiempo2; // 10 segundos de inactividad
+    var timeoutID;
+
+    function resetTimer() {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(showInactivePopup, inactivityTime);
+	hideInactivePopup();
+    }
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('scroll', resetTimer);
+    window.addEventListener('touchstart', resetTimer);
+
+    resetTimer();
+
+  </script>
+
+
 </head>
+
+<!-- Programacion del contenido -->
+
 <body>
+
+<!-- Ventana emergente -->
+  <div id="inactive-popup" class="popup" style="display: none;">
+    <p>Esta página se cerrará por inactividad</p>
+	<p id="countdown">5</p>
+  </div>
+
+ <!-- Formulario para cerrar sesión -->
+    <div class="container">
+      <form id="logoutForm">
+      </form>
+    </div>
+
+
   <header>
     <h1>Programación en C++ para Arduino</h1>
   </header>

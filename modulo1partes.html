@@ -112,8 +112,62 @@
 	text-align: center;
 	}
 
-  </style>
 
+    /* Estilos para el botón de cerrar sesión */
+   .logout-button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #137CBD;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+/* Estilos de ventana emergente */
+
+#inactive-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #EAF6FF;
+  border: 1px solid #4B9CEF;
+  border-radius: 10px; /* Agregamos esta propiedad para los bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: popupFadeIn 0.5s ease-in-out forwards;
+  text-align: center;
+}
+
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#inactive-popup p {
+  color: #333;
+  font-size: 16px; /* Agregamos esta propiedad para el tamaño de fuente */
+  margin: 0; /* Agregamos esta propiedad para eliminar el margen */
+}
+
+    #countdown {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+	text-align: center;
+    }
+
+
+</style>
 
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -134,10 +188,38 @@
     measurementId: "G-KQVW7RP5X9"
   };
 
-    // Initialize Firebase
+  // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth();
+
+
+// Temporizador de cierre de sesión
+
+var tiempo = 300000; // 5 minutos
+var tiempo2 = 290000; // 10 segndos antes de los 5 minutos
+
+ let logoutTimer; // Variable para almacenar el temporizador de cierre de sesión
+
+    const startLogoutTimer = () => {
+      logoutTimer = setTimeout(() => {
+        signOut(auth)
+          .then(() => {
+            // Cerrar sesión automáticamente
+            window.location.href = 'index.html'; // Redireccionar a index.html
+          })
+          .catch((error) => {
+            // Manejar errores de cierre de sesión
+            console.log(error);
+            alert('Error al cerrar sesión.');
+          });
+      }, tiempo); // Cerrar sesión después de 10 segundos de inactividad
+    };
+
+    const resetLogoutTimer = () => {
+      clearTimeout(logoutTimer); // Reiniciar el temporizador de cierre de sesión
+      startLogoutTimer(); // Volver a iniciar el temporizador
+    };
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -153,20 +235,91 @@
 
       signOut(auth)
         .then(() => {
-          // User signed out successfully
+          // Usuario cerró sesión correctamente
           window.location.href = 'index.html'; // Redirect to index.html
         })
         .catch((error) => {
-          // Handle sign-out errors
+          // Manejar errores de cierre de sesión
           console.log(error);
           alert('Error al cerrar sesión.');
         });
     });
+
+// Reiniciar temporizador al hacer clic o interactuar con la página
+    document.addEventListener('click', resetLogoutTimer);
+    document.addEventListener('keydown', resetLogoutTimer);
+    document.addEventListener('mousemove', resetLogoutTimer);
+    document.addEventListener('scroll', resetLogoutTimer);
+    document.addEventListener('touchstart', resetLogoutTimer);
+
+    // Iniciar el temporizador de cierre de sesión al cargar la página
+    startLogoutTimer();
+
+ var timeout;
+
+    function showInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'block';
+
+      var countdownElement = document.getElementById('countdown');
+      countdownElement.textContent = '10';
+
+      var countdown = 10;
+      timeout = setInterval(function() {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+        if (countdown === 0) {
+          hideInactivePopup();
+        }
+      }, 1000);
+    }
+
+    function hideInactivePopup() {
+      var popup = document.getElementById('inactive-popup');
+      popup.style.display = 'none';
+
+      clearInterval(timeout);
+    }
+
+    var inactivityTime = tiempo2; // 10 segundos de inactividad
+    var timeoutID;
+
+    function resetTimer() {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(showInactivePopup, inactivityTime);
+	hideInactivePopup();
+    }
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('scroll', resetTimer);
+    window.addEventListener('touchstart', resetTimer);
+
+    resetTimer();
+
   </script>
 
 
 </head>
+
+<!-- Programacion del contenido -->
+
 <body>
+
+<!-- Ventana emergente -->
+  <div id="inactive-popup" class="popup" style="display: none;">
+    <p>Esta página se cerrará por inactividad</p>
+	<p id="countdown">5</p>
+  </div>
+
+ <!-- Formulario para cerrar sesión -->
+    <div class="container">
+      <form id="logoutForm">
+      </form>
+    </div>
+
+
 
 <header>
     <h1>Módulo 1 - Componentes</h1>
@@ -369,6 +522,8 @@ Da clic o haz doble clic sobre el componente que deseas ver u ocultar.
   </nav>
   <hr>
 </section>
+
+
 
 </body>
 

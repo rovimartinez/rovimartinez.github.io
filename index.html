@@ -149,37 +149,6 @@
         });
     });
 
-
-  // Cerrar sesión del usuario
-  function signOut() {
-    firebase.auth().signOut().then(function() {
-      // Redireccionar al usuario a la página de inicio de sesión
-      window.location.href = "index.html";
-    }).catch(function(error) {
-      console.log(error);
-    });
-  }
-
-  // Cerrar sesión automáticamente después de 10 minutos de inactividad
-  var idleTime = 0;
-  var idleInterval = setInterval(timerIncrement, 10000); // Cada minuto
-
-  function timerIncrement() {
-    idleTime++;
-    if (idleTime >= 1) { // Cambia este valor según tus necesidades (en minutos)
-      signOut(); // Llama a la función de cierre de sesión
-    }
-  }
-
-  // Restablecer el contador de tiempo de inactividad cuando se detecte una interacción del usuario
-  document.addEventListener("mousemove", resetTimer);
-  document.addEventListener("keypress", resetTimer);
-
-  function resetTimer() {
-    idleTime = 0;
-  }
-
-
   </script>
 </body>
 </html>

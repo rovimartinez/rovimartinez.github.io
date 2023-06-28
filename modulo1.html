@@ -195,8 +195,7 @@
 // Temporizador de cierre de sesión
 
 var tiempo = 300000; // 5 minutos
-
-
+var tiempo2 =290000; // 10 segundos antes de los 5 minutos
 
  let logoutTimer; // Variable para almacenar el temporizador de cierre de sesión
 
@@ -219,7 +218,6 @@ var tiempo = 300000; // 5 minutos
       clearTimeout(logoutTimer); // Reiniciar el temporizador de cierre de sesión
       startLogoutTimer(); // Volver a iniciar el temporizador
     };
-
 
     onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -245,8 +243,6 @@ var tiempo = 300000; // 5 minutos
         });
     });
 
-
-
 // Reiniciar temporizador al hacer clic o interactuar con la página
     document.addEventListener('click', resetLogoutTimer);
     document.addEventListener('keydown', resetLogoutTimer);
@@ -256,8 +252,6 @@ var tiempo = 300000; // 5 minutos
 
     // Iniciar el temporizador de cierre de sesión al cargar la página
     startLogoutTimer();
-
-
 
  var timeout;
 
@@ -286,12 +280,13 @@ var tiempo = 300000; // 5 minutos
       clearInterval(timeout);
     }
 
-    var inactivityTime = 290000; // 10 segundos de inactividad
+    var inactivityTime = tiempo2; // 10 segundos de inactividad
     var timeoutID;
 
     function resetTimer() {
       clearTimeout(timeoutID);
       timeoutID = setTimeout(showInactivePopup, inactivityTime);
+	hideInactivePopup();
     }
 
     window.addEventListener('mousemove', resetTimer);
@@ -301,16 +296,22 @@ var tiempo = 300000; // 5 minutos
 
     resetTimer();
 
-
-
-
-
   </script>
+
+
 </head>
 
 <!-- Programacion del contenido -->
 
 <body>
+
+<!-- Ventana emergente -->
+  <div id="inactive-popup" class="popup" style="display: none;">
+    <p>Esta página se cerrará por inactividad</p>
+	<p id="countdown">5</p>
+  </div>
+
+
   <header>
     <h1>Módulo 1 - Robótica educativa</h1>
   </header>
@@ -364,14 +365,6 @@ var tiempo = 300000; // 5 minutos
   </section>
   </div>
 </div>
-
-
-<!-- Ventana emergente -->
-  <div id="inactive-popup" class="popup" style="display: none;">
-    <p>Esta página se cerrará por inactividad en:</p>
-    <p id="countdown">5</p>
-  </div>
-
 
 </body>
 </html>
