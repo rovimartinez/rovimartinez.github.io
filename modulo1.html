@@ -5,169 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo 1 - Robótica educativa</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
 
 
-  <style>
-    /* Estilos para el cuerpo del documento */
-    body {
-      background-color: #f2f2f2;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Estilos para el encabezado */
-    header {
-      background-color: #336699;
-      padding: 20px;
-      color: #fff;
-      text-align: center;
-    }
-
-    /* Estilos para el título */
-    h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    /* Estilos para el botón de enviar */
-    input[type="submit"] {
-      background-color: #336699;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    /* Estilos al pasar el cursor sobre el botón de enviar */
-    input[type="submit"]:hover {
-      background-color: #235180;
-    }
-
-    /* Estilos para el contenedor principal */
-    .container {
-      display: flex;
-    }
-
-    /* Estilos para la parte izquierda del contenedor */
-    .left-section {
-      width: 15%;
-      background-color: #D4E6F1; /* Azul oscuro */
-      padding: 20px;
-    }
-
-    /* Estilos para la parte derecha del contenedor */
-    .right-section {
-      width: 85%;
-      background-color: #E6F2F7;  /* Azul claro */
-      padding: 20px;
-    }
-
-    /* Estilos para los módulos de navegación */
-    .navigation {
-      margin-bottom: 20px;
-    }
-
-    /* Estilos para los enlaces de los módulos */
-    .navigation a {
-      color: #000000;
-      text-decoration: none;
-    }
-
-    /* Estilos para el botón de cerrar sesión */
-   .logout-button {
-  display: block;
-  width: 100px;
-  margin: 0 auto;
-  padding: 10px;
-  background-color: #137CBD;
-  color: #FFFFFF;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
-}
-
-    /* Estilos para el texto de robótica educativa */
-    .right-section h2,
-    .right-section p {
-    	font-size: 16px;
-    	line-height: 1.5;
-    	color: #333333;
-   	 margin-bottom: 10px;
-    }
-
-    /* Estilos para la línea horizontal en la navegación */
-    .navigation hr {
-      border: none;
-      border-top: 2px solid #137CBD;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-  /* Estilo personalizado para los botones */
-  .custom-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #336699;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 120px; /* Ajusta el ancho según tus necesidades */
-  }
-
-  .custom-button:hover {
-    background-color: #235180;
-  }
-
-/* Estilos de ventana emergente */
-
-#inactive-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: #EAF6FF;
-  border: 1px solid #4B9CEF;
-  border-radius: 10px; /* Agregamos esta propiedad para los bordes redondeados */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  animation: popupFadeIn 0.5s ease-in-out forwards;
-  text-align: center;
-}
-
-@keyframes popupFadeIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-#inactive-popup p {
-  color: #333;
-  font-size: 16px; /* Agregamos esta propiedad para el tamaño de fuente */
-  margin: 0; /* Agregamos esta propiedad para eliminar el margen */
-}
-
-    #countdown {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 10px;
-	text-align: center;
-    }
-
-
-</style>
-
-  <script type="module">
+<script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
@@ -296,7 +141,8 @@ var tiempo2 =290000; // 10 segundos antes de los 5 minutos
 
     resetTimer();
 
-  </script>
+
+</script>
 
 
 </head>
@@ -306,65 +152,247 @@ var tiempo2 =290000; // 10 segundos antes de los 5 minutos
 <body>
 
 <!-- Ventana emergente -->
-  <div id="inactive-popup" class="popup" style="display: none;">
-    <p>Esta página se cerrará por inactividad</p>
-	<p id="countdown">5</p>
-  </div>
+<div id="inactive-popup" class="popup" style="display: none;">
+  <p>Esta página se cerrará por inactividad</p>
+  <p id="countdown">5</p>
+</div>
 
-
-  <header>
-    <h1>Módulo 1 - Robótica educativa</h1>
-  </header>
+<header>
+  <h1>Robótica educativa</h1>
+</header>
 
 <!-- Contenedor principal -->
 <div class="container">
-  <!-- Parte izquierda con panel de navegación -->
-  <div class="left-section">
-    <div class="navigation">
-      <h2>Módulos:</h2>
-      <hr>
 
-        <!-- Lista de enlaces a los módulos -->
-        <li><a href="#">Módulo 1</a></li><hr>
-        <li><a href="#">Módulo 2</a></li><hr>
-        <li><a href="#">Módulo 3</a></li><hr>
-        <li><a href="#">Módulo 4</a></li><hr>
-
-    </div>
-    
-    <!-- Formulario para cerrar sesión -->
-    <div class="container">
-      <form id="logoutForm">
-       <input type="submit" value="Cerrar sesión"> 
-      </form>
-    </div>
+<!-- Parte izquierda con panel de navegación -->
+<div class="left-section">
+  <div class="navigation">
+    <h2>Proyectos:</h2>
+    <hr>
+    <!-- Lista de enlaces a los módulos -->
+    <li>Proyecto 1</li>
+    <hr>
+    <li>Proyecto 2</li>
+    <hr>
+    <li>Proyecto 3</li>
+    <hr>
+    <li>Proyecto 4</li>
+    <hr>
   </div>
+
+  <!-- Formulario para cerrar sesión -->
+  <div class="container">
+    <form id="logoutForm">
+      <input type="submit" value="Cerrar sesión" class="button">
+    </form>
+  </div>
+</div>
 
   <!-- Parte derecha con información de robótica educativa -->
   <div class="right-section">
-     <section>
-    <p>En el primer módulo de nuestro curso de robótica educativa, nos introduciremos en el sistema de Aprendizaje Basado en Proyectos (ABP).</p>
-    <p>El ABP es una metodología que promueve un aprendizaje activo y práctico, donde los estudiantes desarrollan habilidades mediante la realización de proyectos reales. Durante este módulo, exploraremos cómo aplicar el ABP en la fabricación de un automóvil básico con movimientos programados.</p>
-    <p>Este proyecto permitirá a los estudiantes comprender los principios básicos de la robótica, aprender a programar movimientos y familiarizarse con las partes de un automóvil. A través de actividades prácticas, los estudiantes adquirirán habilidades en programación, construcción y resolución de problemas.</p>
-    <p>Te invitamos a explorar las diferentes sesiones disponibles:</p>
-    <ul>
-      <li>
-        <h2>Sesión: Partes del Automóvil</h2>
-        <p>En esta sesión, exploraremos las diferentes partes que componen un automóvil básico programable. Conoceremos los componentes esenciales, como el chasis, las ruedas, el motor y los sensores.</p>
-        <button class="custom-button" onclick="location.href='modulo1partes.html'">Ver</
+    <section>
+      <h2>Fundamentos de la robótica educativa</h2>
+      <p>En este punto del curso de robótica educativa, te sumergirás en los conceptos básicos de electrónica y programación, dos pilares fundamentales para comprender el funcionamiento y control de los robots.</p>
+       <p>En cuanto a la electrónica, explorarás componentes clave como microcontroladores, sensores y actuadores. Aprenderás a utilizar correctamente estos componentes y comprender su funcionamiento, así como a interactuar con ellos en el contexto de la robótica educativa.</p>
+       <p>En lo que respecta a la programación, se te introducirán los conceptos fundamentales de la programación por bloques y el lenguaje de programación C++. La programación por bloques es una forma visual e intuitiva de crear programas, donde arrastrar y soltar bloques de código permite crear secuencias lógicas. Además, explorarás el lenguaje de programación C++, ampliamente utilizado en la robótica educativa, para desarrollar programas más avanzados y controlar robots de forma más precisa y eficiente.</p>
+       <p>Durante esta sección del curso, tendrás la oportunidad de aplicar tus conocimientos de electrónica y programación a través de una variedad de ejercicios y proyectos. Construirás circuitos, interactuarás con sensores y actuadores, y programarás secuencias de comandos para controlar el comportamiento de los robots.</p>
+       <p>Al finalizar este punto, estarás equipado con los conocimientos necesarios para comprender los aspectos técnicos de la robótica educativa y utilizar herramientas de programación por bloques y C++ para dar vida a tus propias creaciones robóticas.</p>
+ 	<br>
+	<h2>Aprendizaje Basado en Proyectos (ABP)</h2>     
+	<p>En este curso de robótica educativa, nos introduciremos en el sistema de Aprendizaje Basado en Proyectos (ABP).</p>
+      <p>El ABP es una metodología que promueve un aprendizaje activo y práctico, donde los estudiantes desarrollan habilidades mediante la realización de proyectos reales. Durante este módulo, exploraremos cómo aplicar el ABP en la fabricación de un automóvil básico con movimientos programados.</p>
+      <p>Este proyecto permitirá a los estudiantes comprender los principios básicos de la robótica, aprender a programar movimientos y familiarizarse con las partes de un automóvil. A través de actividades prácticas, los estudiantes adquirirán habilidades en programación, construcción y resolución de problemas.</p>
+      <br>
+	<h2>La robotica y la robotica educativa</h2>
+	<p>La robótica es una disciplina que se ocupa del diseño, construcción, programación y operación de robots. Se centra en el desarrollo de sistemas autónomos capaces de llevar a cabo tareas específicas o de interactuar con su entorno. La robótica abarca áreas como la ingeniería mecánica, la electrónica, la informática y la inteligencia artificial. Su aplicación se extiende a diversos campos, como la industria, la medicina, la exploración espacial, entre otros.</p>
+	<p>Por otro lado, la robótica educativa se enfoca en utilizar los robots como herramientas para el aprendizaje y la enseñanza de diversos conceptos y habilidades. Su objetivo principal es promover el interés y la participación de los estudiantes en disciplinas STEAM (ciencia, tecnología, arte, ingeniería y matemáticas) a través de actividades prácticas y lúdicas. La robótica educativa fomenta el desarrollo de habilidades como la resolución de problemas, la creatividad, el trabajo en equipo y el pensamiento crítico.</p>
 
+<br>
+<h2>Historia resumida de la robótica </h2>
+<p>La robótica tiene una historia que se remonta a la antigüedad, pero fue en la década de 1950 cuando comenzó a florecer la era moderna de la robótica, especialmente en los Estados Unidos. En este contexto, los ingenieros George Devol y Joe Engleberger lograron un hito importante al desarrollar el primer brazo mecánico articulado programable conocido como "Unimate" en 1954. Desde entonces, la robótica ha experimentado avances significativos en múltiples campos, transformando diversas industrias que abarcan desde la manufactura y la minería hasta la exploración espacial y la medicina.</p>
+<p>Es interesante señalar que el término "robot" en sí mismo fue acuñado por el escritor checo Karel Čapek en su obra teatral "R.U.R." en 1920. Esta palabra se ha arraigado en nuestro vocabulario y se ha convertido en un símbolo de la imaginación y el potencial de la robótica.</p>
 
->
-      </li>
-      <li>
-        <h2>Sesión: Programación del Automóvil</h2>
-       <p>En esta sesión, nos adentraremos en la programación del automóvil básico. Aprenderemos los conceptos básicos de la programación y cómo aplicarlos para controlar los movimientos del vehículo.</p>
-        <button class="custom-button" onclick="location.href='modulo1programa1.html'">Ver</button>
-      </li>
-    </ul>
-  </section>
+<div class="carousel">
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia1.jpg" alt="Imagen 1">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Autómatas de Leonardo da Vinci</strong><br>Leonardo da Vinci diseñó varios autómatas y máquinas automáticas, incluyendo un león mecánico y un caballero autómata con movimientos articulados. Inventor: Leonardo da Vinci (Siglo XV, Italia).</p>
   </div>
 </div>
+
+
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia2.jpg" alt="Imagen 2">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Patito de Vaucanson</strong><br>Un autómata en forma de pato que podía comer, beber y digerir. Inventor: Jacques de Vaucanson (Siglo XVIII, Francia).</p>
+  </div>
+</div>
+
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia3.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Máquina Analítica</strong><br>Un diseño de máquina mecánica programable que es considerado el precursor de las computadoras modernas. Inventor: Charles Babbage (Década de 1830, Reino Unido).</p>
+  </div>
+</div>
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia4.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Unimate</strong><br>Un brazo robótico industrial programable utilizado en la línea de producción de General Motors. Inventor: George Devol (Década de 1950, Estados Unidos).</p>
+  </div>
+</div>
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia5.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Shakey</strong><br>Uno de los primeros robots móviles autónomos capaz de navegar y realizar tareas simples. Inventor: Equipo del Stanford Research Institute (Décadas de 1960 y 1970, Estados Unidos).</p>
+  </div>
+</div>
+
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia6.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>AIBO</strong><br>Un robot perro con aspecto canino y capacidades interactivas.
+Inventor: Sony Corporation (Década de 1990, Japón).</p>
+  </div>
+</div>
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia7.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>ASIMO</strong><br>Un robot humanoide avanzado capaz de caminar, correr, subir escaleras y realizar diversas tareas.
+Inventor: Honda Motor Co., Ltd. (Década de 2000, Japón).</p>
+  </div>
+</div>
+
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia8.jpg" alt="Imagen 3">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Atlas</strong><br>Un robot humanoide altamente móvil y ágil, diseñado para realizar tareas complejas en entornos difíciles.
+Inventor: Boston Dynamics (Década de 2010, Estados Unidos).</p>
+  </div>
+</div>
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia9.jpg" alt="Imagen de Sofía">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Sofía</strong><br>Un robot humanoide con inteligencia artificial diseñado para interactuar con las personas de manera natural.
+Inventor: Hanson Robotics (2015, Estados Unidos).</p>
+  </div>
+</div>
+
+
+<div class="contenedor-historia">
+  <div class="image-container">
+    <img src="imagen/historia/historia10.jpg" alt="Imagen de Ameca">
+  </div>
+  <div class="carousel-content">
+    <p><strong>Ameca</strong><br>Un robot humanoide creado por la empresa británica Engineered Arts. Es considerado como uno de los robots más avanzados del mundo debido a sus movimientos faciales y su capacidad para gesticular y expresar emociones.
+    Año de creación: 2019.</p>
+  </div>
+</div>
+
+
+</div>
+  <div class="progress-bar">
+    <div class="progress-bar-fill"></div>
+  </div>
+
+  <div class="carousel-buttons">
+    <button class="carousel-button prev-button">Anterior</button>
+    <button class="carousel-button next-button">Siguiente</button>
+  </div>
+
+<p>Te invitamos a explorar las diferentes sesiones disponibles:</p>
+
+
+      <ul>
+        <li>
+          <h2>Sesión: Partes del Automóvil</h2>
+          <p>En esta sesión, exploraremos las diferentes partes que componen un automóvil básico programable. Conoceremos los componentes esenciales, como el chasis, las ruedas, el motor y los sensores.</p>
+          <button class="button" onclick="location.href='modulo1partes.html'">Ver</button>
+        </li>
+	<br>
+        <li>
+	  <h2>Sesión: Programación del Automóvil</h2>
+          <p>En esta sesión, nos adentraremos en la programación del automóvil básico. Aprenderemos los conceptos básicos de la programación y cómo aplicarlos para controlar los movimientos del vehículo.</p>
+          <button class="button" onclick="location.href='modulo1programa1.html'">Ver</button>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+
+
+ <script>
+    // Código JavaScript para controlar el carrusel
+
+    const carousel = document.querySelector('.carousel');
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+
+    let currentIndex = 0;
+    const slides = carousel.children;
+
+    function showSlide(index) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+      }
+
+      slides[index].style.display = 'flex';
+      progressBarFill.style.width = ((index + 1) / slides.length) * 100 + '%';
+    }
+
+    // Muestra el primer slide al cargar la página
+    showSlide(currentIndex);
+
+    // Evento para avanzar al siguiente slide
+    function nextSlide() {
+      currentIndex++;
+      if (currentIndex >= slides.length) {
+        currentIndex = 0;
+      }
+      showSlide(currentIndex);
+    }
+
+    // Evento para retroceder al slide anterior
+    function prevSlide() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+      }
+      showSlide(currentIndex);
+    }
+
+    // Agrega eventos a los botones de control
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+  </script>
 
 </body>
 </html>
