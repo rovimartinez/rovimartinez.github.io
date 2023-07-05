@@ -1,0 +1,264 @@
+:root {
+    --color-tema1: #336699;  /* Azul oscuro */
+    --color-tema2: #d4e6f1;  /* Azul claro    Azul mas claro #E6F2F7*
+    --color-tema3: #FFFFFF;  /* Blanco */
+    --color-letra1: #FFFFFF; 
+    --color-letra2: #336699; /* Blanco */
+  }
+
+/* Estilos generales */
+body {
+    background-image: url("../Imagen/robots_educativos.png");
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: 65%;
+    background-position: center 100px;
+    background-repeat: no-repeat;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: var(--color-tema1);
+    color: var(--color-letra1);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    text-align: justify;
+}
+
+.alineador {
+    display: flex;
+}
+
+.alineador-compacto {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .alineador {
+        display: none;
+    }
+
+    .alineador-compacto {
+        display: flex;
+    }
+
+    h2 {
+        text-align: center;
+    }
+}
+
+/* Estilos del menú superior */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos del menú desplegable */
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 0;
+}
+
+nav ul li:hover>ul {
+    display: block;
+}
+
+nav ul ul li {
+    display: block;
+    width: 100%;
+}
+
+nav ul ul li a {
+    color: var(--color-letra2);
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+nav ul ul li a:hover {
+    background-color: var(--color-letra2);
+    color: #fff;
+}
+
+/* Estilos del contenido principal */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section h2 {
+    color: var(--color-letra2);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+section p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+section ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+section ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: var(--color-tema1);
+    color: var(--color-letra1);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+form {
+    max-width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    max-height: 170px;
+    /* Ajusta esta altura según tus necesidades */
+    margin-bottom: 20px;
+    /* Crea un espacio de margen inferior */
+    width: 400px;
+    /* Ajusta este valor según el ancho deseado */
+}
+
+
+/* Estilos para las etiquetas del formulario */
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilos para los campos de texto y contraseña del formulario */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de envío del formulario */
+.login-form input[type="submit"] {
+    background-color: (--color-tema1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inicio-parrafo {
+    width: 100%;
+    text-align: justify;
+    margin-right: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: var(--color-tema1);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #1d1f7aea;
+}
+
+/* Estilos para el fondo del parrafo y la autentificacion */
+section {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Estilos para el contenedor principal */
+.inicio-sesion {
+    width: 30%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Añadido para centrar verticalmente */
+}
+
+.contacto-parrafo {
+    width: fit-content;
+    height: fit-content;
+    text-align: justify;
+    margin-right: 30px;
+    box-shadow: 0 0 10px rgba(5, 17, 126, 0.719);
+    padding: 60px;
+}

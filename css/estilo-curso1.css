@@ -1,0 +1,148 @@
+:root {
+  --tamaño-fuente: 16px;
+  --tamaño-h1: 14px;
+  --color-tema1: #336699;
+  --color-tema2: #d4e6f1;
+  --color-tema3: #FFFFFF;
+  --color-letra1: #FFFFFF;
+  --color-cuerpo: #f2f2f2;
+  --color-boton: #336699; /* Cambia el color de los botones aquí */
+  --borde-boton: 4px;
+  --espacio-tema: 15px;
+}
+
+/* Estilo para el encabezado */
+header {
+  background-color: var(--color-tema1);
+  padding: var(--espacio-tema);
+  color: var(--color-letra1);
+  font-size: var(--tamaño-h1);
+  text-align: center;
+}
+
+/* Estilo para los encabezados h1 y h2 */
+h1, h2 {
+  margin: 0;
+}
+
+/* Estilo para el cuerpo del documento */
+body {
+  background-color: var(--color-cuerpo);
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para los contenedores */
+.container {
+  display: flex;
+}
+
+.left-section {
+  width: 15%;
+  background-color: var(--color-tema2);
+  padding: 20px;
+}
+
+.right-section {
+  width: 85%;
+  background-color: var(--color-tema3);
+  padding: 20px;
+}
+
+/* Estilos para los párrafos dentro de la sección derecha */
+.right-section p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+/* Estilos para los enlaces de navegación */
+.navigation {
+  margin-bottom: 20px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.navigation hr {
+  border: none;
+  border-top: 2px solid var(--color-tema1);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los botones */
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: var(--color-boton); /* Cambia el color del botón aquí */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 120px;
+}
+
+.button:hover {
+  background-color: #234466;
+}
+
+
+
+/* Estilos para el contador */
+#countdown {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Estilos para el botón de información */
+.boton-info {
+  font-size: 14px;
+  background-color: var(--color-boton); /* Cambia el color del botón aquí */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--color-boton); /* Cambia el color del botón aquí */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 140px;
+}
+
+/* Estilos para el pie de página */
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-tema1);
+  color: #fff;
+}
+footer p {
+  text-align: center;
+}
+
+/* Estilos generales para el cuerpo */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+

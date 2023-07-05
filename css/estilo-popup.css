@@ -1,0 +1,32 @@
+/* Estilos para el popup inactivo */
+#inactive-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #eaf6ff;
+    border: 1px solid #4b9cef;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: popupFadeIn 0.5s ease-in-out forwards;
+    text-align: center;
+  }
+  
+  @keyframes popupFadeIn {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  #inactive-popup p {
+    color: #333;
+    font-size: 16px;
+    margin: 0;
+  }

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1 - Robótica educativa</title>
+    <link rel="stylesheet" href="../css/estilo-curso1.css">
+    <link rel="stylesheet" href="../css/estilo-menu1.css">
+    <link rel="stylesheet" href="../css/estilo-popup.css">
+
+    <style>
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 1000px;
+            /* Ajusta el ancho del carrusel según tus necesidades */
+            margin: 0 auto;
+        }
+
+        .carousel img {
+            width: 400px;
+            height: auto;
+            margin: 30px;
+        }
+
+        .carousel-content {
+            width: 100%;
+            height: auto;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 12px;
+        }
+
+        .carousel-content p {
+            margin-bottom: 0;
+        }
+
+        .carousel-content strong {
+            font-weight: bold;
+        }
+
+        /* Resto de estilos para el carrusel, botones y barra de progreso */
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #336699;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-button:hover {
+            background-color: #234466;
+        }
+
+        .progress-bar {
+            width: 1000px;
+            /* Ajusta el ancho de la barra de progreso según tus necesidades */
+            height: 4px;
+            background-color: var(--color-tema2);
+            margin: 20px auto;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--color-tema1);
+            transition: width 0.3s;
+        }
+
+        .contenedor-historia {
+            display: flex;
+        }
+
+        @media (max-width: 600px) {
+            .contenedor-historia {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .carousel {
+                width: 430px;
+            }
+
+            .progress-bar {
+                width: 430px;
+            }
+
+            .carousel img {
+                width: 100;
+                height: auto;
+                margin-right: 10px;
+            }
+    
+            .carousel-content {
+                width: 90%;
+                height: auto;
+                margin-top: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenedor de la información -->
+
+    <body>
+        <div id="container">
+            <header>
+                <h1>Robótica educativa</h1>
+            </header>
+
+            <!-- Menú desplegable -->
+            <div id="menu">
+                <button id="close-menu">X</button>
+                <div id="menu-toggle">
+                    <div class="line">
+                        <div class="menu-text">Menú</div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <ul>
+                    <li><a href="#" class="accordion-toggle">Proyecto 1</a>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Viñeta 1</li>
+                                <li>Viñeta 2</li>
+                                <li>Viñeta 3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#" class="accordion-toggle">Proyecto 2</a>
+                        <div class="accordion-content">
+                            <p>Contenido del Proyecto 2</p>
+                        </div>
+                    </li>
+                    <li><a href="#" class="accordion-toggle">Proyecto 3</a>
+                        <div class="accordion-content">
+                            <p>Contenido del Proyecto 3</p>
+                        </div>
+                    </li>
+                    <li><a href="#" class="accordion-toggle">Proyecto 4</a>
+                        <div class="accordion-content">
+                            <p>Contenido del Proyecto 4</p>
+                        </div>
+                    </li>
+                    <li><a href="#" class="accordion-toggle">Proyecto 5</a>
+                        <div class="accordion-content">
+                            <p>Contenido del Proyecto 5</p>
+                        </div>
+                    </li>
+                    <!-- Boton para cerrar sesión -->
+                    <div class="container">
+                        <form id="logoutForm">
+                            <input type="submit" value="Cerrar sesión" class="button">
+                        </form>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Información de la pagina -->
+        <div id="content">
+            <h2>La robotica y la robotica educativa</h2>
+            <p>La robótica es una disciplina que se ocupa del diseño, construcción, programación y operación de
+                robots. Se
+                centra en el desarrollo de sistemas autónomos capaces de llevar a cabo tareas específicas o de
+                interactuar
+                con su entorno. La robótica abarca áreas como la ingeniería mecánica, la electrónica, la
+                informática y la
+                inteligencia artificial. Su aplicación se extiende a diversos campos, como la industria, la
+                medicina, la
+                exploración espacial, entre otros.</p>
+            <p>Por otro lado, la robótica educativa se enfoca en utilizar los robots como herramientas para el
+                aprendizaje
+                y la enseñanza de diversos conceptos y habilidades. Su objetivo principal es promover el interés
+                y la
+                participación de los estudiantes en disciplinas STEAM (ciencia, tecnología, arte, ingeniería y
+                matemáticas)
+                a través de actividades prácticas y lúdicas. La robótica educativa fomenta el desarrollo de
+                habilidades como
+                la resolución de problemas, la creatividad, el trabajo en equipo y el pensamiento crítico.</p>
+
+            <br>
+            <h2>Historia resumida de la robótica </h2>
+            <p>La robótica tiene una historia que se remonta a la antigüedad, pero fue en la década de 1950
+                cuando comenzó
+                a florecer la era moderna de la robótica, especialmente en los Estados Unidos. En este contexto,
+                los
+                ingenieros George Devol y Joe Engleberger lograron un hito importante al desarrollar el primer
+                brazo
+                mecánico articulado programable conocido como "Unimate" en 1954. Desde entonces, la robótica ha
+                experimentado avances significativos en múltiples campos, transformando diversas industrias que
+                abarcan
+                desde la manufactura y la minería hasta la exploración espacial y la medicina.</p>
+            <p>Es interesante señalar que el término "robot" en sí mismo fue acuñado por el escritor checo Karel
+                Čapek en
+                su obra teatral "R.U.R." en 1920. Esta palabra se ha arraigado en nuestro vocabulario y se ha
+                convertido en
+                un símbolo de la imaginación y el potencial de la robótica.</p>
+
+            <div class="carousel">
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Autómatas de Leonardo da Vinci</strong><br>Leonardo da Vinci diseñó varios
+                            autómatas y
+                            máquinas automáticas, incluyendo un león mecánico y un caballero autómata con
+                            movimientos articulados.
+                            Inventor: Leonardo da Vinci (Siglo XV, Italia).</p>
+                    </div>
+                </div>
+
+
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Patito de Vaucanson</strong><br>Un autómata en forma de pato que podía comer,
+                            beber y
+                            digerir. Inventor: Jacques de Vaucanson (Siglo XVIII, Francia).</p>
+                    </div>
+                </div>
+
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia3.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Máquina Analítica</strong><br>Un diseño de máquina mecánica programable que
+                            es considerado el
+                            precursor de las computadoras modernas. Inventor: Charles Babbage (Década de 1830,
+                            Reino Unido).</p>
+                    </div>
+                </div>
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia4.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Unimate</strong><br>Un brazo robótico industrial programable utilizado en la
+                            línea de
+                            producción de General Motors. Inventor: George Devol (Década de 1950, Estados
+                            Unidos).</p>
+                    </div>
+                </div>
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia5.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Shakey</strong><br>Uno de los primeros robots móviles autónomos capaz de
+                            navegar y realizar
+                            tareas simples. Inventor: Equipo del Stanford Research Institute (Décadas de 1960 y
+                            1970, Estados
+                            Unidos).</p>
+                    </div>
+                </div>
+
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia6.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>AIBO</strong><br>Un robot perro con aspecto canino y capacidades
+                            interactivas.
+                            Inventor: Sony Corporation (Década de 1990, Japón).</p>
+                    </div>
+                </div>
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia7.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>ASIMO</strong><br>Un robot humanoide avanzado capaz de caminar, correr, subir
+                            escaleras y
+                            realizar diversas tareas.
+                            Inventor: Honda Motor Co., Ltd. (Década de 2000, Japón).</p>
+                    </div>
+                </div>
+
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia8.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Atlas</strong><br>Un robot humanoide altamente móvil y ágil, diseñado para
+                            realizar tareas
+                            complejas en entornos difíciles.
+                            Inventor: Boston Dynamics (Década de 2010, Estados Unidos).</p>
+                    </div>
+                </div>
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia9.jpg" alt="Imagen de Sofía">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Sofía</strong><br>Un robot humanoide con inteligencia artificial diseñado
+                            para interactuar
+                            con las personas de manera natural.
+                            Inventor: Hanson Robotics (2015, Estados Unidos).</p>
+                    </div>
+                </div>
+
+
+                <div class="contenedor-historia">
+                    <div class="image-container">
+                        <img src="../imagen/historia/historia10.jpg" alt="Imagen de Ameca">
+                    </div>
+                    <div class="carousel-content">
+                        <p><strong>Ameca</strong><br>Un robot humanoide creado por la empresa británica
+                            Engineered Arts. Es
+                            considerado como uno de los robots más avanzados del mundo debido a sus movimientos
+                            faciales y su
+                            capacidad para gesticular y expresar emociones.
+                            Año de creación: 2019.</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+
+            <div class="carousel-buttons">
+                <button class="carousel-button prev-button">Anterior</button>
+                <button class="carousel-button next-button">Siguiente</button>
+            </div>
+
+            <br><br><br>
+        </div>
+        <footer>
+            <p>&copy; 2023 RoboMakerLab. Todos los derechos reservados.</p>
+        </footer>
+
+        <!-- Ventana emergente -->
+        <div id="inactive-popup" class="popup" style="display: none;">
+            <p>Esta página se cerrará por inactividad</p>
+            <p id="countdown">5</p>
+        </div>
+
+        <script src="../js/controlMenu.js"> </script>
+        <script src="../js/carrusel.js"></script>
+
+        <script>
+            // Código JavaScript para controlar el carrusel
+
+            const carousel = document.querySelector('.carousel');
+            const progressBarFill = document.querySelector('.progress-bar-fill');
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+
+            let currentIndex = 0;
+            const slides = carousel.children;
+
+            function showSlide(index) {
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = 'none';
+                }
+
+                slides[index].style.display = 'flex';
+                progressBarFill.style.width = ((index + 1) / slides.length) * 100 + '%';
+            }
+
+            // Muestra el primer slide al cargar la página
+            showSlide(currentIndex);
+
+            // Evento para avanzar al siguiente slide
+            function nextSlide() {
+                currentIndex++;
+                if (currentIndex >= slides.length) {
+                    currentIndex = 0;
+                }
+                showSlide(currentIndex);
+            }
+
+            // Evento para retroceder al slide anterior
+            function prevSlide() {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = slides.length - 1;
+                }
+                showSlide(currentIndex);
+            }
+
+            // Agrega eventos a los botones de control
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+        </script>
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+            import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+            import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBvaHVzrjt89982iejiSgDq-h4nOKEww7M",
+                authDomain: "roboticaeducativa-b5ee2.firebaseapp.com",
+                projectId: "roboticaeducativa-b5ee2",
+                storageBucket: "roboticaeducativa-b5ee2.appspot.com",
+                messagingSenderId: "953005574181",
+                appId: "1:953005574181:web:684ed71344e716a1d557cc",
+                measurementId: "G-KQVW7RP5X9"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const auth = getAuth();
+
+
+            // Temporizador de cierre de sesión
+
+            var tiempo = 300000; // 5 minutos
+            var tiempo2 = 290000; // 10 segundos antes de los 5 minutos
+
+            let logoutTimer; // Variable para almacenar el temporizador de cierre de sesión
+
+            const startLogoutTimer = () => {
+                logoutTimer = setTimeout(() => {
+                    signOut(auth)
+                        .then(() => {
+                            // Cerrar sesión automáticamente
+                            window.location.href = 'index.html'; // Redireccionar a index.html
+                        })
+                        .catch((error) => {
+                            // Manejar errores de cierre de sesión
+                            console.log(error);
+                            alert('Error al cerrar sesión.');
+                        });
+                }, tiempo); // Cerrar sesión después de 10 segundos de inactividad
+            };
+
+            const resetLogoutTimer = () => {
+                clearTimeout(logoutTimer); // Reiniciar el temporizador de cierre de sesión
+                startLogoutTimer(); // Volver a iniciar el temporizador
+            };
+
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    // User is not authenticated, redirect to index.html
+                    window.location.href = 'index.html';
+                }
+            });
+
+            const logoutForm = document.getElementById('logoutForm');
+
+            logoutForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent form submission
+
+                signOut(auth)
+                    .then(() => {
+                        // Usuario cerró sesión correctamente
+                        window.location.href = 'index.html'; // Redirect to index.html
+                    })
+                    .catch((error) => {
+                        // Manejar errores de cierre de sesión
+                        console.log(error);
+                        alert('Error al cerrar sesión.');
+                    });
+            });
+
+            // Reiniciar temporizador al hacer clic o interactuar con la página
+            document.addEventListener('click', resetLogoutTimer);
+            document.addEventListener('keydown', resetLogoutTimer);
+            document.addEventListener('mousemove', resetLogoutTimer);
+            document.addEventListener('scroll', resetLogoutTimer);
+            document.addEventListener('touchstart', resetLogoutTimer);
+
+            // Iniciar el temporizador de cierre de sesión al cargar la página
+            startLogoutTimer();
+
+            var timeout;
+
+            function showInactivePopup() {
+                var popup = document.getElementById('inactive-popup');
+                popup.style.display = 'block';
+
+                var countdownElement = document.getElementById('countdown');
+                countdownElement.textContent = '10';
+
+                var countdown = 10;
+                timeout = setInterval(function () {
+                    countdown--;
+                    countdownElement.textContent = countdown;
+
+                    if (countdown === 0) {
+                        hideInactivePopup();
+                    }
+                }, 1000);
+            }
+
+            function hideInactivePopup() {
+                var popup = document.getElementById('inactive-popup');
+                popup.style.display = 'none';
+
+                clearInterval(timeout);
+            }
+
+            var inactivityTime = tiempo2; // 10 segundos de inactividad
+            var timeoutID;
+
+            function resetTimer() {
+                clearTimeout(timeoutID);
+                timeoutID = setTimeout(showInactivePopup, inactivityTime);
+                hideInactivePopup();
+            }
+
+            window.addEventListener('mousemove', resetTimer);
+            window.addEventListener('keydown', resetTimer);
+            window.addEventListener('scroll', resetTimer);
+            window.addEventListener('touchstart', resetTimer);
+
+            resetTimer();
+
+
+        </script>
+    </body>
+
+</html>
