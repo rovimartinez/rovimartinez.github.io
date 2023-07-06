@@ -191,21 +191,13 @@ form {
 }
 
 /* Estilos para el botón de envío del formulario */
-.login-form input[type="submit"] { 
-    font-weight: 500; 
-    padding: 12px 22px; 
-    background-color:var(--color-tema1); 
-    color: var(--color-letra1); 
-    border-radius: 10px; 
-    border: 2px solid var(--color-tema1); 
-    transition: 0.2s; 
-    display: block; 
-    margin: 0 auto; 
-} 
-
-.login-form input[type="submit"]:hover {
-    background-color:  #0aa5ff;
-    color: var(--color-letra1);
+.login-form input[type="submit"] {
+    background-color: (--color-tema1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .inicio-parrafo {
@@ -240,7 +232,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #336699;
+    background-color: #1d1f7aea;
 }
 
 /* Estilos para el fondo del parrafo y la autentificacion */

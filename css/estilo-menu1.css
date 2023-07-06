@@ -2,13 +2,13 @@
 #menu {
     width: 200px;
     height: 100vh;
-    background-color: #A5B9CC   ;
+    background-color: #83a9f1;
     position: fixed;
     left: -200px;
     top: 0;
     transition: left 0.3s ease;
     padding: 0;
-    margin-top: 0px;
+    margin-top: 65px;
   }
   
   #menu.show {
@@ -103,20 +103,20 @@
   #menu li a {
     background-image: url('imagen/vineta.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left center;
     padding-left: 20px;
     background-size: 16px;
   }
 
   #close-menu {
-    position: center;
-    text-align: center;
-    margin-top: 0px;
-    padding: 22px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
     cursor: pointer;
-    background-color:#003366 ;
+    background-color: rgb(121, 121, 250);
     color: white;
-    border-radius: 2px;
+    border-radius: 5px;
     animation: fade-in 1s ease-in-out;
   }
 
